@@ -20,8 +20,9 @@
             --primary-light: #7CAF55;
             --glass-bg: rgba(255, 255, 255, 0.08);
             --glass-border: rgba(255, 255, 255, 0.15);
-            --text-primary: #f0f7ea;
-            --text-secondary: #d4e6c3;
+            /* MÀU CHỮ ĐÃ ĐƯỢC CHỈNH SỬA - TĂNG ĐỘ TƯƠNG PHẢN */
+            --text-primary: #FFFFFF; /* Trắng hoàn toàn để dễ đọc */
+            --text-secondary: #E8F4D9; /* Xanh lá nhạt nhưng sáng hơn */
             --shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
             --gradient: linear-gradient(135deg, rgba(93, 140, 62, 0.18), rgba(124, 175, 85, 0.12));
         }
@@ -33,6 +34,7 @@
             padding: 20px;
             position: relative;
             overflow-x: hidden;
+            font-weight: 400; /* Đảm bảo độ đậm mặc định */
         }
         
         body::before {
@@ -98,6 +100,7 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            font-weight: 700; /* Làm đậm tiêu đề chính */
         }
         
         .tagline {
@@ -106,6 +109,7 @@
             max-width: 600px;
             margin: 0 auto;
             line-height: 1.6;
+            font-weight: 500; /* Làm đậm một chút */
         }
         
         /* Main Content */
@@ -139,6 +143,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 700; /* Làm đậm tiêu đề phụ */
         }
         
         h2 i {
@@ -161,7 +166,8 @@
         }
         
         .progress-label {
-            font-weight: 600;
+            font-weight: 600; /* Đã đậm */
+            color: var(--text-primary); /* Sử dụng màu chữ chính */
         }
         
         .progress-status {
@@ -169,18 +175,18 @@
             padding: 4px 12px;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.1);
-            font-weight: 500;
+            font-weight: 600; /* Làm đậm trạng thái */
         }
         
         .status-done {
-            background: rgba(72, 187, 120, 0.2);
-            color: #48bb78;
+            background: rgba(72, 187, 120, 0.25);
+            color: #FFFFFF;
             border: 1px solid rgba(72, 187, 120, 0.4);
         }
         
         .status-preparing {
-            background: rgba(237, 137, 54, 0.2);
-            color: #ed8936;
+            background: rgba(237, 137, 54, 0.25);
+            color: #FFFFFF;
             border: 1px solid rgba(237, 137, 54, 0.4);
         }
         
@@ -207,9 +213,17 @@
             color: var(--text-secondary);
         }
         
+        .overview-text p, .overview-text li {
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
         .highlight {
-            color: var(--primary-light);
+            color: #FFFFFF; /* Trắng để nổi bật hơn */
             font-weight: 600;
+            background-color: rgba(93, 140, 62, 0.3); /* Thêm nền nhẹ để tăng độ tương phản */
+            padding: 2px 6px;
+            border-radius: 4px;
         }
         
         /* Competition Section */
@@ -221,17 +235,18 @@
         }
         
         .competitor-tag {
-            background: rgba(93, 140, 62, 0.18);
-            border: 1px solid rgba(124, 175, 85, 0.3);
+            background: rgba(93, 140, 62, 0.25);
+            border: 1px solid rgba(124, 175, 85, 0.4);
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9rem;
-            color: var(--text-secondary);
+            color: #FFFFFF; /* Trắng để dễ đọc */
+            font-weight: 500;
             transition: all 0.2s ease;
         }
         
         .competitor-tag:hover {
-            background: rgba(124, 175, 85, 0.25);
+            background: rgba(124, 175, 85, 0.4);
             transform: scale(1.03);
         }
         
@@ -244,24 +259,40 @@
         }
         
         .model-item {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.08);
             padding: 18px 15px;
             border-radius: 16px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            color: var(--text-secondary);
+            font-weight: 500; /* Làm đậm chữ trong model-item */
         }
         
         .model-item:hover {
-            background: rgba(93, 140, 62, 0.15);
-            border-color: rgba(124, 175, 85, 0.2);
+            background: rgba(93, 140, 62, 0.25);
+            border-color: rgba(124, 175, 85, 0.3);
             transform: translateY(-3px);
+            color: #FFFFFF;
         }
         
         .model-icon {
             font-size: 2rem;
             color: var(--primary-light);
             margin-bottom: 12px;
+        }
+        
+        /* Lists styling */
+        ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        ul li {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.6;
+            font-weight: 400;
         }
         
         /* Conclusion */
@@ -274,6 +305,7 @@
             padding-top: 25px;
             margin-top: 25px;
             font-size: 1.05rem;
+            font-weight: 500; /* Làm đậm phần kết luận */
         }
         
         /* Footer */
@@ -284,6 +316,7 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 500;
         }
         
         /* Responsive */
@@ -302,6 +335,10 @@
             
             .glass-card {
                 padding: 22px;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
             }
         }
     </style>
@@ -390,7 +427,7 @@
                     <p><span class="highlight">Crabor</span> là một nền tảng giao đồ ăn (Delivery Food) với thương hiệu được xây dựng xung quanh linh vật <span class="highlight">chú cua</span> - biểu tượng cho sự nhanh nhẹn, chắc chắn và bền bỉ.</p>
                     
                     <p>Dự án tập trung vào việc tạo ra một hệ sinh thái khép kín gồm:</p>
-                    <ul style="padding-left: 20px; margin: 15px 0; color: var(--text-secondary);">
+                    <ul>
                         <li>Ứng dụng đặt đồ ăn cho người dùng cuối</li>
                         <li>Nền tảng quản lý cho đối tác nhà hàng</li>
                         <li>Ứng dụng điều phối và nhận đơn cho tài xế</li>
@@ -417,7 +454,7 @@
                     </div>
                     
                     <p style="margin-top: 20px;">Chiến lược cạnh tranh của Crabor tập trung vào:</p>
-                    <ul style="padding-left: 20px; margin: 15px 0; color: var(--text-secondary);">
+                    <ul>
                         <li><span class="highlight">Trải nghiệm người dùng đơn giản, trực quan</span></li>
                         <li><span class="highlight">Mức phí hoa hồng hợp lý</span> cho đối tác nhà hàng</li>
                         <li><span class="highlight">Chính sách ưu đãi tốt</span> cho tài xế giao hàng</li>
@@ -456,7 +493,7 @@
                     </div>
                     
                     <p style="margin-top: 20px;">Nguồn thu chính của Crabor đến từ:</p>
-                    <ul style="padding-left: 20px; margin: 15px 0; color: var(--text-secondary);">
+                    <ul>
                         <li><span class="highlight">Phí hoa hồng</span> trên mỗi đơn hàng thành công (từ nhà hàng)</li>
                         <li><span class="highlight">Phí dịch vụ giao hàng</span> (từ người dùng)</li>
                         <li><span class="highlight">Phí quảng cáo và ưu tiên hiển thị</span> (từ nhà hàng)</li>
