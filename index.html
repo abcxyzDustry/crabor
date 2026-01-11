@@ -14,18 +14,20 @@
         }
         
         :root {
-            --primary-color: #ff7b00;
-            --primary-dark: #cc6200;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --text-primary: #ffffff;
-            --text-secondary: #e0e0e0;
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            --gradient: linear-gradient(135deg, rgba(255, 123, 0, 0.15), rgba(255, 196, 0, 0.1));
+            /* PALETTE MÀU MỚI - Dựa trên #5D8C3E */
+            --primary-color: #5D8C3E;
+            --primary-dark: #4A7032;
+            --primary-light: #7CAF55;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-primary: #f0f7ea;
+            --text-secondary: #d4e6c3;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            --gradient: linear-gradient(135deg, rgba(93, 140, 62, 0.18), rgba(124, 175, 85, 0.12));
         }
         
         body {
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            background: linear-gradient(135deg, #0f1a0a 0%, #1a2a12 50%, #223318 100%);
             color: var(--text-primary);
             min-height: 100vh;
             padding: 20px;
@@ -41,8 +43,8 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 123, 0, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(255, 196, 0, 0.05) 0%, transparent 40%);
+                radial-gradient(circle at 20% 30%, rgba(93, 140, 62, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(124, 175, 85, 0.07) 0%, transparent 40%);
             z-index: -1;
         }
         
@@ -57,8 +59,8 @@
             padding: 40px 20px;
             margin-bottom: 40px;
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            border-radius: 24px;
             border: 1px solid var(--glass-border);
             box-shadow: var(--shadow);
             position: relative;
@@ -74,7 +76,7 @@
             height: 200%;
             background: var(--gradient);
             z-index: -1;
-            animation: rotate 20s linear infinite;
+            animation: rotate 25s linear infinite;
         }
         
         @keyframes rotate {
@@ -84,15 +86,15 @@
         
         .logo {
             font-size: 3.5rem;
-            color: var(--primary-color);
+            color: var(--primary-light);
             margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(255, 123, 0, 0.5);
+            text-shadow: 0 0 20px rgba(124, 175, 85, 0.5);
         }
         
         h1 {
             font-size: 2.8rem;
             margin-bottom: 10px;
-            background: linear-gradient(to right, #ff7b00, #ffc400);
+            background: linear-gradient(to right, var(--primary-light), #a3d977);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -116,7 +118,7 @@
         
         .glass-card {
             background: var(--glass-bg);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border-radius: 20px;
             border: 1px solid var(--glass-border);
             padding: 30px;
@@ -126,13 +128,14 @@
         
         .glass-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            border-color: rgba(124, 175, 85, 0.3);
         }
         
         h2 {
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--primary-color);
+            color: var(--primary-light);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -162,25 +165,28 @@
         }
         
         .progress-status {
-            font-size: 0.9rem;
-            padding: 3px 10px;
+            font-size: 0.85rem;
+            padding: 4px 12px;
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.1);
+            font-weight: 500;
         }
         
         .status-done {
-            background: rgba(46, 204, 113, 0.2);
-            color: #2ecc71;
+            background: rgba(72, 187, 120, 0.2);
+            color: #48bb78;
+            border: 1px solid rgba(72, 187, 120, 0.4);
         }
         
         .status-preparing {
-            background: rgba(241, 196, 15, 0.2);
-            color: #f1c40f;
+            background: rgba(237, 137, 54, 0.2);
+            color: #ed8936;
+            border: 1px solid rgba(237, 137, 54, 0.4);
         }
         
         .progress-bar {
             height: 10px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.09);
             border-radius: 5px;
             overflow: hidden;
         }
@@ -188,9 +194,10 @@
         .progress-fill {
             height: 100%;
             border-radius: 5px;
-            background: linear-gradient(to right, var(--primary-color), #ffc400);
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
             width: 0%;
             transition: width 1.5s ease-in-out;
+            box-shadow: inset 0 0 10px rgba(124, 175, 85, 0.3);
         }
         
         /* Overview Section */
@@ -201,7 +208,7 @@
         }
         
         .highlight {
-            color: var(--primary-color);
+            color: var(--primary-light);
             font-weight: 600;
         }
         
@@ -214,11 +221,18 @@
         }
         
         .competitor-tag {
-            background: rgba(255, 123, 0, 0.15);
-            border: 1px solid rgba(255, 123, 0, 0.3);
-            padding: 8px 15px;
+            background: rgba(93, 140, 62, 0.18);
+            border: 1px solid rgba(124, 175, 85, 0.3);
+            padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+        
+        .competitor-tag:hover {
+            background: rgba(124, 175, 85, 0.25);
+            transform: scale(1.03);
         }
         
         /* Market Model */
@@ -231,15 +245,23 @@
         
         .model-item {
             background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 15px;
+            padding: 18px 15px;
+            border-radius: 16px;
             text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .model-item:hover {
+            background: rgba(93, 140, 62, 0.15);
+            border-color: rgba(124, 175, 85, 0.2);
+            transform: translateY(-3px);
         }
         
         .model-icon {
             font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
+            color: var(--primary-light);
+            margin-bottom: 12px;
         }
         
         /* Conclusion */
@@ -249,8 +271,9 @@
             color: var(--text-secondary);
             line-height: 1.8;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            margin-top: 20px;
+            padding-top: 25px;
+            margin-top: 25px;
+            font-size: 1.05rem;
         }
         
         /* Footer */
@@ -278,7 +301,7 @@
             }
             
             .glass-card {
-                padding: 20px;
+                padding: 22px;
             }
         }
     </style>
@@ -290,7 +313,7 @@
                 <i class="fas fa-crab"></i>
             </div>
             <h1>Dự Án Crabor</h1>
-            <p class="tagline">Hệ sinh thái giao đồ ăn với linh vật chú cua cam - Nhanh nhẹn, đáng tin cậy và khác biệt</p>
+            <p class="tagline">Hệ sinh thái giao đồ ăn với linh vật chú cua - Nhanh nhẹn, tin cậy và bền vững</p>
         </header>
         
         <div class="content-grid">
@@ -364,12 +387,12 @@
             <section class="glass-card">
                 <h2><i class="fas fa-project-diagram"></i> Tổng Quan Dự Án</h2>
                 <div class="overview-text">
-                    <p><span class="highlight">Crabor</span> là một nền tảng giao đồ ăn (Delivery Food) với thương hiệu được xây dựng xung quanh linh vật <span class="highlight">chú cua màu cam</span> - biểu tượng cho sự nhanh nhẹn, chắc chắn và khác biệt.</p>
+                    <p><span class="highlight">Crabor</span> là một nền tảng giao đồ ăn (Delivery Food) với thương hiệu được xây dựng xung quanh linh vật <span class="highlight">chú cua</span> - biểu tượng cho sự nhanh nhẹn, chắc chắn và bền bỉ.</p>
                     
                     <p>Dự án tập trung vào việc tạo ra một hệ sinh thái khép kín gồm:</p>
                     <ul style="padding-left: 20px; margin: 15px 0; color: var(--text-secondary);">
                         <li>Ứng dụng đặt đồ ăn cho người dùng cuối</li>
-                        <li>Nền tảng quản lý cho đối tác đối tác</li>
+                        <li>Nền tảng quản lý cho đối tác nhà hàng</li>
                         <li>Ứng dụng điều phối và nhận đơn cho tài xế</li>
                         <li>Hệ thống thanh toán tích hợp đa phương thức</li>
                     </ul>
@@ -389,7 +412,6 @@
                         <div class="competitor-tag">GrabFood</div>
                         <div class="competitor-tag">ShopeeFood</div>
                         <div class="competitor-tag">GoFood (Gojek)</div>
-                        <div class="competitor-tag">Baemin (đã rút lui)</div>
                         <div class="competitor-tag">Now (Foody)</div>
                         <div class="competitor-tag">Loship</div>
                     </div>
@@ -415,7 +437,7 @@
                             <div class="model-icon">
                                 <i class="fas fa-utensils"></i>
                             </div>
-                            <div>Kết nối người dùng với các đối tác của Crabor với khách hàng</div>
+                            <div>Kết nối người dùng với nhà hàng</div>
                         </div>
                         
                         <div class="model-item">
@@ -435,9 +457,9 @@
                     
                     <p style="margin-top: 20px;">Nguồn thu chính của Crabor đến từ:</p>
                     <ul style="padding-left: 20px; margin: 15px 0; color: var(--text-secondary);">
-                        <li><span class="highlight">Phí hoa hồng</span> trên mỗi đơn hàng thành công (các đối tác)</li>
+                        <li><span class="highlight">Phí hoa hồng</span> trên mỗi đơn hàng thành công (từ nhà hàng)</li>
                         <li><span class="highlight">Phí dịch vụ giao hàng</span> (từ người dùng)</li>
-                        <li><span class="highlight">Phí quảng cáo và ưu tiên hiển thị</span> (các đối tác)</li>
+                        <li><span class="highlight">Phí quảng cáo và ưu tiên hiển thị</span> (từ nhà hàng)</li>
                         <li><span class="highlight">Gói thành viên</span> với các đặc quyền cho người dùng thân thiết</li>
                     </ul>
                 </div>
@@ -450,12 +472,12 @@
             <div class="overview-text">
                 <p>Dự án Crabor đã có những bước khởi đầu vững chắc với concept thương hiệu rõ ràng và linh vật độc đáo. Việc lựa chọn phân khúc giao đồ ăn thay vì sàn TMĐT đa ngành là một quyết định chiến lược đúng đắn, giúp tập trung nguồn lực vào thị trường mục tiêu cụ thể.</p>
                 
-                <p class="conclusion">Với sự chuẩn bị kỹ lưỡng về pháp lý, mô hình kinh doanh rõ ràng và chiến lược cạnh tranh tập trung, Crabor có tiềm năng trở thành một ứng dụng giao đồ ăn được yêu thích, mang đến trải nghiệm khác biệt với thương hiệu chú cua cam nhanh nhẹn, đáng tin cậy.</p>
+                <p class="conclusion">Với sự chuẩn bị kỹ lưỡng về pháp lý, mô hình kinh doanh rõ ràng và chiến lược cạnh tranh tập trung, Crabor có tiềm năng trở thành một ứng dụng giao đồ ăn được yêu thích, mang đến trải nghiệm khác biệt với thương hiệu chú cua nhanh nhẹn, đáng tin cậy và bền vững.</p>
             </div>
         </section>
         
         <footer>
-            <p>© 2026 Dự Án Crabor. Tài liệu nội bộ - Bảo mật thông tin.</p>
+            <p>© 2023 Dự Án Crabor. Tài liệu nội bộ - Bảo mật thông tin.</p>
             <p>Trạng thái: Đang trong giai đoạn phát triển và chuẩn bị ra mắt</p>
         </footer>
     </div>
@@ -501,9 +523,18 @@
             document.querySelectorAll('.glass-card').forEach(card => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
                 observer.observe(card);
             });
+            
+            // Hiệu ứng nhấp nháy nhẹ cho header
+            const header = document.querySelector('header');
+            setInterval(() => {
+                header.style.boxShadow = `0 8px 32px rgba(93, 140, 62, 0.3)`;
+                setTimeout(() => {
+                    header.style.boxShadow = `var(--shadow)`;
+                }, 1000);
+            }, 3000);
         });
     </script>
 </body>
