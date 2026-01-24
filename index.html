@@ -27,6 +27,216 @@
             border-radius: 10px;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             padding: 30px;
+            position: relative;
+        }
+        
+        /* Menu Button */
+        .menu-button {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #5D8C3E;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(93, 140, 62, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .menu-button:hover {
+            background-color: #4a7032;
+            transform: scale(1.05);
+        }
+        
+        .menu-line {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-button.active .menu-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .menu-button.active .menu-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-button.active .menu-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        /* Modal Content */
+        .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-30px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            background-color: #5D8C3E;
+            color: white;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            color: white;
+            margin: 0;
+            border: none;
+            font-size: 1.8rem;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .close-modal:hover {
+            transform: scale(1.2);
+        }
+        
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto;
+            max-height: calc(80vh - 100px);
+        }
+        
+        /* Tabs */
+        .tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .tab {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .tab:hover {
+            color: #5D8C3E;
+        }
+        
+        .tab.active {
+            color: #5D8C3E;
+        }
+        
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: #5D8C3E;
+        }
+        
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .policy-section {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .policy-section:last-child {
+            border-bottom: none;
+        }
+        
+        .policy-section h3 {
+            color: #5D8C3E;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .policy-section h3 i {
+            font-size: 1.1rem;
+        }
+        
+        .policy-section ul {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        
+        .completion-badge {
+            display: inline-block;
+            background-color: #e7f6ec;
+            color: #2e7d32;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 15px;
         }
         
         /* Header Styles */
@@ -263,10 +473,150 @@
             h2 {
                 font-size: 1.4rem;
             }
+            
+            .menu-button {
+                top: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+            
+            .modal-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                width: 100%;
+                text-align: left;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Menu Button -->
+    <div class="menu-button" id="menuButton">
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
+        <div class="menu-line"></div>
+    </div>
+    
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-gavel"></i> Hệ Thống Pháp Lý Crabor</h2>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="tabs">
+                    <button class="tab active" data-tab="user-tab">Người Dùng</button>
+                    <button class="tab" data-tab="partner-tab">Đối Tác</button>
+                    <button class="tab" data-tab="shipper-tab">Shipper</button>
+                </div>
+                
+                <div id="user-tab" class="tab-content active">
+                    <div class="policy-section">
+                        <h3><i class="fas fa-user-check"></i> Điều Khoản Người Dùng <span class="completion-badge">Hoàn thành 100%</span></h3>
+                        <p><strong>Phạm vi áp dụng:</strong> Tất cả người dùng đăng ký tài khoản trên ứng dụng Crabor</p>
+                        <ul>
+                            <li>Quyền và nghĩa vụ khi sử dụng dịch vụ</li>
+                            <li>Chính sách thanh toán và hoàn tiền</li>
+                            <li>Bảo mật thông tin cá nhân</li>
+                            <li>Cơ chế giải quyết tranh chấp</li>
+                            <li>Trách nhiệm với đơn hàng đã đặt</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h3><i class="fas fa-question-circle"></i> FAQ Riêng Cho Người Dùng <span class="completion-badge">Hoàn thành 100%</span></h3>
+                        <p>Giải đáp các thắc mắc thường gặp:</p>
+                        <ul>
+                            <li>Tại sao không hoàn tiền sau khi đặt hàng?</li>
+                            <li>Trường hợp nào bị khóa tài khoản?</li>
+                            <li>Quy trình khiếu nại chất lượng đồ ăn</li>
+                            <li>Crabor có chịu trách nhiệm với đồ ăn không?</li>
+                            <li>Cách thức liên hệ hỗ trợ khẩn cấp</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="partner-tab" class="tab-content">
+                    <div class="policy-section">
+                        <h3><i class="fas fa-store"></i> Điều Khoản Đối Tác <span class="completion-badge">Hoàn thành 100%</span></h3>
+                        <p><strong>Áp dụng cho:</strong> Các nhà hàng, quán ăn đăng ký hợp tác với Crabor</p>
+                        <ul>
+                            <li>Hoa hồng 20% trên mỗi đơn hàng</li>
+                            <li>Quyền và trách nhiệm của đối tác</li>
+                            <li>Chính sách hủy đơn và xử lý phạt</li>
+                            <li>Tiêu chuẩn chất lượng và vệ sinh ATTP</li>
+                            <li>Điều kiện ngừng hợp tác</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h3><i class="fas fa-handshake"></i> FAQ Đối Tác <span class="completion-badge">Hoàn thành 100%</span></h3>
+                        <p>Giải đáp thắc mắc cho đối tác nhà hàng:</p>
+                        <ul>
+                            <li>Cách tính hoa hồng 20% như thế nào?</li>
+                            <li>Quyền hủy đơn trong trường hợp nào?</li>
+                            <li>Trách nhiệm VSATTP thuộc về ai?</li>
+                            <li>Khi nào bị ngừng hợp tác với Crabor?</li>
+                            <li>Quy trình giải quyết tranh chấp với khách hàng</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="shipper-tab" class="tab-content">
+                    <div class="policy-section">
+                        <h3><i class="fas fa-motorcycle"></i> Điều Khoản Shipper <span class="completion-badge">Hoàn thành 100%</span></h3>
+                        <p><strong>Áp dụng cho:</strong> Tất cả shipper đăng ký tài khoản giao hàng</p>
+                        <ul>
+                            <li>Mô hình hợp tác viên tự do (không phải nhân viên)</li>
+                            <li>Phí đăng ký 700.000 VND</li>
+                            <li>Quy trình đăng ký và xác minh</li>
+                            <li>Quyền lợi và trách nhiệm khi giao hàng</li>
+                            <li>Chính sách bảo hiểm và hỗ trợ rủi ro</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h3><i class="fas fa-shield-alt"></i> Cam Kết & Bảo Vệ Pháp Lý <span class="completion-badge">Hoàn thành 100%</span></h3>
+                        <p>Các điểm then chốt trong bảo vệ pháp lý:</p>
+                        <ul>
+                            <li>Không có quan hệ lao động giữa Crabor và Shipper</li>
+                            <li>Không giữ giấy tờ gốc của Shipper</li>
+                            <li>Phí 700k đã được rà soát an toàn pháp lý</li>
+                            <li>Có bằng chứng chấp thuận điều khoản qua app</li>
+                            <li>Cơ chế log và lưu trữ hồ sơ điện tử</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h3><i class="fas fa-mobile-alt"></i> UX Pháp Lý Trong App <span class="completion-badge">Hoàn thành 100%</span></h3>
+                        <p>Flow đồng thuận điều khoản trong ứng dụng:</p>
+                        <ul>
+                            <li>3 bước đăng ký: Điều khoản → Cam kết → Thanh toán phí</li>
+                            <li>Checkbox bắt buộc đồng ý điều khoản</li>
+                            <li>Link xem chi tiết điều khoản đầy đủ</li>
+                            <li>Lưu log thời điểm đồng ý và thanh toán</li>
+                            <li>Bằng chứng pháp lý đầy đủ cho từng thao tác</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div class="container">
         <header>
             <div class="logo">
@@ -304,7 +654,7 @@
                     <div class="progress-item">
                         <div class="progress-info">
                             <span class="progress-label">Xây Dựng Pháp Lý Ứng Dụng</span>
-                            <span class="progress-status status-preparing">Đang chuẩn bị</span>
+                            <span class="progress-status status-done">Đã hoàn thành</span>
                         </div>
                         <div class="progress-bar">
                             <div class="progress-fill" id="progress3"></div>
@@ -430,15 +780,17 @@
         <section class="card">
             <h2><i class="fas fa-flag-checkered"></i> Kết Luận</h2>
             <div class="content-text">
-                <p>Dự án Crabor đã có những bước khởi đầu vững chắc với concept thương hiệu rõ ràng và linh vật độc đáo. Việc lựa chọn phân khúc giao đồ ăn thay vì sàn TMĐT đa ngành là một quyết định chiến lược đúng đắn, giúp tập trung nguồn lực vào thị trường mục tiêu cụ thể.</p>
+                <p>Dự án Crabor đã có những bước khởi đầu vững chắc với concept thương hiệu rõ ràng và linh vật độc đáo. <strong>Đặc biệt, hệ thống pháp lý đã được hoàn thiện 100%</strong> với đầy đủ điều khoản cho 3 đối tượng: Người dùng, Đối tác và Shipper.</p>
                 
-                <p class="conclusion">Với sự chuẩn bị kỹ lưỡng về pháp lý, mô hình kinh doanh rõ ràng và chiến lược cạnh tranh tập trung, Crabor có tiềm năng trở thành một ứng dụng giao đồ ăn được yêu thích, mang đến trải nghiệm khác biệt với thương hiệu chú cua nhanh nhẹn, đáng tin cậy và bền vững.</p>
+                <p>Việc lựa chọn phân khúc giao đồ ăn thay vì sàn TMĐT đa ngành là một quyết định chiến lược đúng đắn, giúp tập trung nguồn lực vào thị trường mục tiêu cụ thể.</p>
+                
+                <p class="conclusion">Với hệ thống pháp lý hoàn chỉnh, mô hình kinh doanh rõ ràng và chiến lược cạnh tranh tập trung, Crabor có tiềm năng trở thành một ứng dụng giao đồ ăn được yêu thích, mang đến trải nghiệm khác biệt với thương hiệu chú cua nhanh nhẹn, đáng tin cậy và bền vững.</p>
             </div>
         </section>
         
         <footer>
             <p>© 2026 Dự Án Crabor. Tài liệu nội bộ - Bảo mật thông tin.</p>
-            <p>Trạng thái: Đang trong giai đoạn phát triển và chuẩn bị ra mắt</p>
+            <p>Trạng thái: <strong>Hệ thống pháp lý đã hoàn thành 100%</strong> - Đang trong giai đoạn chuẩn bị thành lập công ty và phát triển ứng dụng</p>
         </footer>
     </div>
 
@@ -448,7 +800,7 @@
             const progressItems = [
                 { id: 'progress1', value: 100 },
                 { id: 'progress2', value: 100 },
-                { id: 'progress3', value: 45 },
+                { id: 'progress3', value: 100 }, // Đã cập nhật lên 100%
                 { id: 'progress4', value: 30 },
                 { id: 'progress5', value: 25 },
                 { id: 'progress6', value: 15 }
@@ -485,6 +837,60 @@
                 card.style.transform = 'translateY(20px)';
                 card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
                 observer.observe(card);
+            });
+            
+            // Xử lý modal pháp lý
+            const menuButton = document.getElementById('menuButton');
+            const modalOverlay = document.getElementById('modalOverlay');
+            const closeModal = document.getElementById('closeModal');
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // Mở modal khi click nút menu
+            menuButton.addEventListener('click', () => {
+                modalOverlay.classList.add('active');
+                menuButton.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Đóng modal
+            closeModal.addEventListener('click', () => {
+                modalOverlay.classList.remove('active');
+                menuButton.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Đóng modal khi click ra ngoài
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    modalOverlay.classList.remove('active');
+                    menuButton.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Xử lý tab switching
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    // Xóa active class từ tất cả tabs và tab contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Thêm active class cho tab và content được chọn
+                    tab.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Đóng modal bằng phím ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    modalOverlay.classList.remove('active');
+                    menuButton.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
             });
         });
     </script>
