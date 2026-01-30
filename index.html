@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crabor - Tổng Quan Dự Án</title>
+    <title>Crabor - Tổng Quan Dự Án & Tiến Độ Kỹ Thuật</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -254,9 +254,19 @@
             color: #2e7d32;
         }
         
+        .status-in-progress {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+        
         .status-preparing {
             background-color: #fff3e0;
             color: #ef6c00;
+        }
+        
+        .status-not-started {
+            background-color: #f5f5f5;
+            color: #757575;
         }
         
         .progress-bar {
@@ -286,6 +296,11 @@
             font-weight: 600;
         }
         
+        .warning {
+            color: #d32f2f;
+            font-weight: 600;
+        }
+        
         /* Lists */
         ul {
             padding-left: 20px;
@@ -298,51 +313,79 @@
             line-height: 1.6;
         }
         
-        /* Competition Section */
-        .competitors {
+        /* Tech Stack */
+        .tech-stack {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
             margin-top: 15px;
         }
         
-        .competitor-tag {
-            background-color: #f1f8e9;
-            border: 1px solid #c5e1a5;
+        .tech-tag {
+            background-color: #e8f5e9;
+            border: 1px solid #a5d6a7;
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
-            color: #5D8C3E;
+            color: #2e7d32;
             font-weight: 500;
         }
         
-        /* Market Model */
-        .model-details {
+        /* Feature List */
+        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
         }
         
-        .model-item {
+        .feature-item {
             background-color: #f9f9f9;
-            padding: 18px 15px;
+            padding: 15px;
             border-radius: 8px;
-            text-align: center;
-            border: 1px solid #eee;
+            border-left: 4px solid #5D8C3E;
             transition: all 0.3s ease;
             color: #444;
         }
         
-        .model-item:hover {
+        .feature-item:hover {
             background-color: #f1f8e9;
-            border-color: #c5e1a5;
+            transform: translateX(5px);
         }
         
-        .model-icon {
-            font-size: 2rem;
+        .feature-icon {
+            font-size: 1.5rem;
             color: #5D8C3E;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+        }
+        
+        /* API Status */
+        .api-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        
+        .status-active {
+            background-color: #4caf50;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
         }
         
         /* Conclusion */
@@ -367,154 +410,18 @@
             border-top: 1px solid #eee;
         }
         
-        /* Legal Policy Page Styles */
-        .legal-container {
-            max-width: 1000px;
-            margin: 0 auto;
+        /* Info Box */
+        .info-box {
+            background-color: #e8f5e9;
+            border: 1px solid #a5d6a7;
             padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
         }
         
-        .legal-header {
-            text-align: center;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #5D8C3E 0%, #4a7032 100%);
-            color: white;
-            border-radius: 10px;
-            margin-bottom: 40px;
-        }
-        
-        .legal-title {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .legal-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        /* Legal Tabs */
-        .legal-tabs {
-            display: flex;
-            overflow-x: auto;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #eee;
-            gap: 5px;
-        }
-        
-        .legal-tab {
-            padding: 15px 25px;
-            background: none;
-            border: none;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #666;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-        
-        .legal-tab:hover {
-            color: #5D8C3E;
-        }
-        
-        .legal-tab.active {
-            color: #5D8C3E;
-            border-bottom: 3px solid #5D8C3E;
-        }
-        
-        /* Legal Content */
-        .legal-content {
-            display: none;
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
-            margin-bottom: 30px;
-        }
-        
-        .legal-content.active {
-            display: block;
-        }
-        
-        .policy-section {
-            margin-bottom: 30px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .policy-section:last-child {
-            border-bottom: none;
-        }
-        
-        .policy-section h3 {
-            color: #5D8C3E;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .policy-section h3 i {
-            font-size: 1.1rem;
-        }
-        
-        .policy-section p {
-            margin-bottom: 15px;
-            line-height: 1.6;
-            color: #444;
-        }
-        
-        .policy-section ul {
-            margin: 15px 0 15px 20px;
-        }
-        
-        .policy-section li {
-            margin-bottom: 10px;
-            line-height: 1.5;
-            color: #444;
-        }
-        
-        .policy-section li strong {
-            color: #333;
-        }
-        
-        .policy-note {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-left: 4px solid #5D8C3E;
-            margin: 15px 0;
-            border-radius: 0 5px 5px 0;
-        }
-        
-        .policy-warning {
-            background-color: #fff8e1;
-            padding: 15px;
-            border-left: 4px solid #ffb300;
-            margin: 15px 0;
-            border-radius: 0 5px 5px 0;
-        }
-        
-        .policy-title {
-            font-size: 1.8rem;
-            color: #5D8C3E;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .policy-subtitle {
-            font-size: 1.3rem;
-            color: #4a7032;
-            margin: 20px 0 15px 0;
-            font-weight: 600;
+        .info-box.warning {
+            background-color: #ffebee;
+            border-color: #ef9a9a;
         }
         
         /* Responsive */
@@ -554,23 +461,6 @@
                 top: 75px;
                 right: 20px;
             }
-            
-            .legal-tabs {
-                flex-wrap: wrap;
-            }
-            
-            .legal-tab {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-            
-            .legal-content {
-                padding: 20px;
-            }
-            
-            .policy-title {
-                font-size: 1.4rem;
-            }
         }
     </style>
 </head>
@@ -584,9 +474,13 @@
     
     <!-- Menu Dropdown -->
     <div class="menu-dropdown" id="menuDropdown">
-        <button class="menu-item" onclick="showPage('legal')">
-            <i class="fas fa-gavel"></i>
-            <span>Chính Sách Pháp Lý</span>
+        <button class="menu-item" onclick="showPage('tech')">
+            <i class="fas fa-code"></i>
+            <span>Tiến Độ Kỹ Thuật</span>
+        </button>
+        <button class="menu-item" onclick="showPage('home')">
+            <i class="fas fa-home"></i>
+            <span>Về Trang Chủ</span>
         </button>
     </div>
     
@@ -604,7 +498,7 @@
             <div class="content-grid">
                 <!-- Tiến độ dự án -->
                 <section class="card">
-                    <h2><i class="fas fa-tasks"></i> Tiến Độ Dự Án</h2>
+                    <h2><i class="fas fa-tasks"></i> Tiến Độ Tổng Quan</h2>
                     <div class="progress-section">
                         <div class="progress-item">
                             <div class="progress-info">
@@ -618,7 +512,7 @@
                         
                         <div class="progress-item">
                             <div class="progress-info">
-                                <span class="progress-label">Linh Vật & Nhận Diện</span>
+                                <span class="progress-label">Hệ Thống Pháp Lý</span>
                                 <span class="progress-status status-done">Đã hoàn thành</span>
                             </div>
                             <div class="progress-bar">
@@ -628,8 +522,8 @@
                         
                         <div class="progress-item">
                             <div class="progress-info">
-                                <span class="progress-label">Xây Dựng Pháp Lý Ứng Dụng</span>
-                                <span class="progress-status status-done">Đã hoàn thành</span>
+                                <span class="progress-label">Kiến Trúc Kỹ Thuật</span>
+                                <span class="progress-status status-in-progress">Đang triển khai</span>
                             </div>
                             <div class="progress-bar">
                                 <div class="progress-fill" id="progress3"></div>
@@ -638,8 +532,8 @@
                         
                         <div class="progress-item">
                             <div class="progress-info">
-                                <span class="progress-label">Thành Lập Công Ty TNHH Crabor</span>
-                                <span class="progress-status status-preparing">Đang chuẩn bị</span>
+                                <span class="progress-label">Backend API</span>
+                                <span class="progress-status status-in-progress">Đang phát triển</span>
                             </div>
                             <div class="progress-bar">
                                 <div class="progress-fill" id="progress4"></div>
@@ -648,7 +542,7 @@
                         
                         <div class="progress-item">
                             <div class="progress-info">
-                                <span class="progress-label">Tài Khoản Doanh Nghiệp</span>
+                                <span class="progress-label">Giao Diện Người Dùng</span>
                                 <span class="progress-status status-preparing">Đang chuẩn bị</span>
                             </div>
                             <div class="progress-bar">
@@ -658,7 +552,7 @@
                         
                         <div class="progress-item">
                             <div class="progress-info">
-                                <span class="progress-label">Phát Triển Ứng Dụng</span>
+                                <span class="progress-label">Thành Lập Công Ty</span>
                                 <span class="progress-status status-preparing">Đang chuẩn bị</span>
                             </div>
                             <div class="progress-bar">
@@ -682,529 +576,402 @@
                             <li>Hệ thống thanh toán tích hợp đa phương thức</li>
                         </ul>
                         
-                        <p>Khác với các sàn TMĐT đa ngành truyền thống, Crabor chọn <span class="highlight">phân khúc giao đồ ăn</span> làm trọng tâm để tránh cạnh tranh trực tiếp với các ông lớn và tập trung nguồn lực vào một lĩnh vực có nhu cầu cao, tần suất sử dụng lớn.</p>
+                        <div class="info-box">
+                            <p><i class="fas fa-info-circle"></i> <strong>Cập nhật kỹ thuật:</strong> Hệ thống backend đã được xây dựng với kiến trúc hiện đại, hỗ trợ real-time tracking và multi-role management.</p>
+                        </div>
                     </div>
                 </section>
                 
                 <!-- Cạnh tranh & thị trường -->
                 <section class="card">
-                    <h2><i class="fas fa-bullseye"></i> Thị Trường & Đối Thủ Cạnh Tranh</h2>
+                    <h2><i class="fas fa-bullseye"></i> Lợi Thế Cạnh Tranh Kỹ Thuật</h2>
                     <div class="content-text">
-                        <p>Crabor sẽ tham gia vào thị trường <span class="highlight">giao đồ ăn trực tuyến tại Việt Nam</span> - một thị trường đang phát triển mạnh với sự tham gia của cả người dùng thành thị lẫn nông thôn.</p>
+                        <p>So với các đối thủ hiện tại, Crabor được xây dựng với các ưu điểm kỹ thuật:</p>
                         
-                        <p>Các đối thủ cạnh tranh chính:</p>
-                        <div class="competitors">
-                            <div class="competitor-tag">GrabFood</div>
-                            <div class="competitor-tag">ShopeeFood</div>
-                            <div class="competitor-tag">GoFood (Gojek)</div>
-                            <div class="competitor-tag">Now (Foody)</div>
-                            <div class="competitor-tag">Loship</div>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div><strong>Real-time Tracking</strong><br>Cập nhật vị trí shipper theo thời gian thực</div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div><strong>Multi-role Design</strong><br>4 giao diện riêng biệt tối ưu trải nghiệm</div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div><strong>Modular Architecture</strong><br>Dễ dàng mở rộng và bảo trì</div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div><strong>Cloud-native</strong><br>Triển khai trên cloud với khả năng scale</div>
+                            </div>
                         </div>
-                        
-                        <p style="margin-top: 20px;">Chiến lược cạnh tranh của Crabor tập trung vào:</p>
-                        <ul>
-                            <li><span class="highlight">Trải nghiệm người dùng đơn giản, trực quan</span></li>
-                            <li><span class="highlight">Mức phí hoa hồng hợp lý</span> cho đối tác của crabor</li>
-                            <li><span class="highlight">Chính sách ưu đãi tốt</span> cho tài xế giao hàng</li>
-                            <li>Xây dựng <span class="highlight">thương hiệu gần gũi, đáng tin cậy</span> qua linh vật chú cua</li>
-                        </ul>
                     </div>
                 </section>
                 
-                <!-- Mô hình kinh doanh -->
+                <!-- Tech Stack -->
                 <section class="card">
-                    <h2><i class="fas fa-chart-line"></i> Mô Hình Kinh Doanh</h2>
+                    <h2><i class="fas fa-cogs"></i> Công Nghệ Sử Dụng</h2>
                     <div class="content-text">
-                        <p>Crabor hoạt động theo mô hình <span class="highlight">Delivery Food Platform</span> - Nền tảng kết nối người dùng, nhà hàng và tài xế giao hàng.</p>
+                        <p>Dự án được phát triển với stack công nghệ hiện đại:</p>
                         
-                        <div class="model-details">
-                            <div class="model-item">
-                                <div class="model-icon">
-                                    <i class="fas fa-utensils"></i>
-                                </div>
-                                <div>Kết nối người dùng với đối tác</div>
-                            </div>
-                            
-                            <div class="model-item">
-                                <div class="model-icon">
-                                    <i class="fas fa-motorcycle"></i>
-                                </div>
-                                <div>Điều phối tài xế giao hàng tối ưu</div>
-                            </div>
-                            
-                            <div class="model-item">
-                                <div class="model-icon">
-                                    <i class="fas fa-money-bill-wave"></i>
-                                </div>
-                                <div>Xử lý thanh toán đa phương thức</div>
-                            </div>
+                        <div class="tech-stack">
+                            <div class="tech-tag">Node.js</div>
+                            <div class="tech-tag">Express.js</div>
+                            <div class="tech-tag">MongoDB</div>
+                            <div class="tech-tag">Socket.io</div>
+                            <div class="tech-tag">RESTful API</div>
+                            <div class="tech-tag">Cloud Database</div>
+                            <div class="tech-tag">HTML5/CSS3</div>
+                            <div class="tech-tag">JavaScript</div>
                         </div>
                         
-                        <p style="margin-top: 20px;">Nguồn thu chính của Crabor đến từ:</p>
+                        <p style="margin-top: 20px;">Kiến trúc hướng dịch vụ (Service-oriented) giúp hệ thống:</p>
                         <ul>
-                            <li><span class="highlight">Phí hoa hồng</span> trên mỗi đơn hàng thành công (đối tác của crabor)</li>
-                            <li><span class="highlight">Phí dịch vụ giao hàng</span> (từ người dùng)</li>
-                            <li><span class="highlight">Phí quảng cáo và ưu tiên hiển thị</span> (đối tác crabor)</li>
-                            <li><span class="highlight">Gói thành viên</span> với các đặc quyền cho người dùng thân thiết</li>
+                            <li><span class="highlight">Dễ mở rộng</span>: Thêm tính năng mới không ảnh hưởng hệ thống cũ</li>
+                            <li><span class="highlight">Bảo trì đơn giản</span>: Mỗi module độc lập, dễ debug</li>
+                            <li><span class="highlight">Hiệu suất cao</span>: Tối ưu cho lượng người dùng lớn</li>
                         </ul>
                     </div>
                 </section>
             </div>
             
-            <!-- Kết luận -->
+            <!-- Call to Action -->
             <section class="card">
-                <h2><i class="fas fa-flag-checkered"></i> Kết Luận</h2>
+                <h2><i class="fas fa-rocket"></i> Trạng Thái Hiện Tại</h2>
                 <div class="content-text">
-                    <p>Dự án Crabor đã có những bước khởi đầu vững chắc với concept thương hiệu rõ ràng và linh vật độc đáo. <strong>Đặc biệt, hệ thống pháp lý đã được hoàn thiện 100%</strong> với đầy đủ điều khoản cho 3 đối tượng: Người dùng, Đối tác và Shipper.</p>
+                    <div class="api-status">
+                        <span class="status-dot status-active"></span>
+                        <span><strong>Backend Server:</strong> Đã sẵn sàng và có thể chạy được</span>
+                    </div>
                     
-                    <p>Việc lựa chọn phân khúc giao đồ ăn thay vì sàn TMĐT đa ngành là một quyết định chiến lược đúng đắn, giúp tập trung nguồn lực vào thị trường mục tiêu cụ thể.</p>
+                    <div class="api-status">
+                        <span class="status-dot status-active"></span>
+                        <span><strong>Core APIs:</strong> 5 module chính đã được định nghĩa</span>
+                    </div>
                     
-                    <p class="conclusion">Với hệ thống pháp lý hoàn chỉnh, mô hình kinh doanh rõ ràng và chiến lược cạnh tranh tập trung, Crabor có tiềm năng trở thành một ứng dụng giao đồ ăn được yêu thích, mang đến trải nghiệm khác biệt với thương hiệu chú cua nhanh nhẹn, đáng tin cậy và bền vững.</p>
+                    <div class="api-status">
+                        <span class="status-dot status-active"></span>
+                        <span><strong>Real-time System:</strong> Socket.io đã tích hợp thành công</span>
+                    </div>
+                    
+                    <div class="info-box">
+                        <p><i class="fas fa-code-branch"></i> <strong>Development Status:</strong> Dự án đang trong giai đoạn <span class="highlight">active development</span> với 42 commits trên repository chính. Các tính năng cốt lõi đã được xây dựng xong, sẵn sàng cho giai đoạn hoàn thiện và testing.</p>
+                    </div>
+                    
+                    <p class="conclusion">Với nền tảng kỹ thuật vững chắc, kiến trúc hiện đại và chiến lược phát triển rõ ràng, Crabor có tiềm năng trở thành một ứng dụng giao đồ ăn được yêu thích, mang đến trải nghiệm khác biệt với thương hiệu chú cua nhanh nhẹn, đáng tin cậy và bền vững.</p>
                 </div>
             </section>
             
             <footer>
                 <p>© 2026 Dự Án Crabor. Tài liệu nội bộ - Bảo mật thông tin.</p>
-                <p>Trạng thái: <strong>Hệ thống pháp lý đã hoàn thành 100%</strong> - Đang trong giai đoạn chuẩn bị thành lập công ty và phát triển ứng dụng</p>
+                <p>Trạng thái: <strong>Hệ thống pháp lý hoàn thành 100% | Backend đang phát triển tích cực</strong></p>
+                <p><a href="#" onclick="showPage('tech')" style="color: #5D8C3E; text-decoration: none;">→ Xem chi tiết tiến độ kỹ thuật</a></p>
             </footer>
         </div>
     </div>
     
-    <!-- Legal Policy Page -->
-    <div id="legal-page" class="page-content">
-        <div class="legal-container">
+    <!-- Technical Progress Page -->
+    <div id="tech-page" class="page-content">
+        <div class="container">
             <button class="back-btn" onclick="showPage('home')">
                 <i class="fas fa-arrow-left"></i> Về Trang Chủ
             </button>
             
-            <div class="legal-header">
-                <h1 class="legal-title"><i class="fas fa-gavel"></i> BỘ CHÍNH SÁCH PHÁP LÝ CRABOR</h1>
-                <p class="legal-subtitle">Áp dụng cho toàn bộ người dùng, đối tác và shipper khi sử dụng nền tảng Crabor</p>
-            </div>
-            
-            <!-- Legal Tabs -->
-            <div class="legal-tabs">
-                <button class="legal-tab active" data-tab="general-tab">Điều Khoản Chung</button>
-                <button class="legal-tab" data-tab="user-tab">Người Dùng</button>
-                <button class="legal-tab" data-tab="partner-tab">Đối Tác</button>
-                <button class="legal-tab" data-tab="shipper-tab">Shipper</button>
-                <button class="legal-tab" data-tab="dispute-tab">Giải Quyết Tranh Chấp</button>
-                <button class="legal-tab" data-tab="legal-tab">Pháp Lý TMĐT</button>
-                <button class="legal-tab" data-tab="faq-tab">FAQ</button>
-            </div>
-            
-            <!-- Tab Điều Khoản Chung -->
-            <div id="general-tab" class="legal-content active">
-                <h2 class="policy-title"><i class="fas fa-file-contract"></i> PHẦN I. ĐIỀU KHOẢN SỬ DỤNG CHUNG</h2>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-info-circle"></i> 1. Giới thiệu</h3>
-                    <p>Crabor là nền tảng công nghệ trung gian kết nối Người dùng, Đối tác cung cấp dịch vụ/nhà hàng và Đối tác giao hàng (Shipper). Crabor không trực tiếp bán hàng, không trực tiếp giao hàng và không phải là bên lao động với shipper.</p>
-                    <p>Việc truy cập, đăng ký và sử dụng ứng dụng Crabor đồng nghĩa với việc bạn đã đọc, hiểu và đồng ý với toàn bộ điều khoản này.</p>
+            <header>
+                <div class="logo">
+                    <i class="fas fa-laptop-code"></i>
                 </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-bullseye"></i> 2. Phạm vi áp dụng</h3>
-                    <p>Điều khoản này áp dụng cho:</p>
-                    <ul>
-                        <li>Người dùng đặt dịch vụ/đặt món</li>
-                        <li>Đối tác nhà hàng/quán ăn</li>
-                        <li>Đối tác giao hàng (shipper)</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-edit"></i> 3. Quyền sửa đổi</h3>
-                    <p>Crabor có quyền thay đổi, cập nhật điều khoản vào bất kỳ thời điểm nào. Phiên bản mới có hiệu lực ngay khi được công bố trên ứng dụng/website.</p>
-                    <div class="policy-warning">
-                        <strong>Lưu ý:</strong> Người dùng, đối tác và shipper có trách nhiệm tự cập nhật các thay đổi.
+                <h1>Tiến Độ Phát Triển Kỹ Thuật</h1>
+                <p class="tagline">Cập nhật chi tiết trạng thái phát triển hệ thống Crabor</p>
+            </header>
+            
+            <div class="content-grid">
+                <!-- Backend Progress -->
+                <section class="card">
+                    <h2><i class="fas fa-server"></i> Backend Development</h2>
+                    <div class="progress-section">
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span class="progress-label">Server Core</span>
+                                <span class="progress-status status-done">Hoàn thành</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="tech-progress1"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span class="progress-label">API Structure</span>
+                                <span class="progress-status status-done">Hoàn thành</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="tech-progress2"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span class="progress-label">Authentication</span>
+                                <span class="progress-status status-in-progress">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="tech-progress3"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span class="progress-label">Database Models</span>
+                                <span class="progress-status status-in-progress">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="tech-progress4"></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Tab Người Dùng -->
-            <div id="user-tab" class="legal-content">
-                <h2 class="policy-title"><i class="fas fa-user"></i> PHẦN II. CHÍNH SÁCH DÀNH CHO NGƯỜI DÙNG</h2>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-check-circle"></i> 1. Điều kiện sử dụng</h3>
-                    <ul>
-                        <li>Từ 18 tuổi trở lên, có đầy đủ năng lực hành vi dân sự</li>
-                        <li>Cung cấp thông tin cá nhân chính xác</li>
-                        <li>Không sử dụng Crabor cho mục đích trái pháp luật</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-shopping-cart"></i> 2. Quy trình đặt đơn</h3>
-                    <ul>
-                        <li>Khi người dùng xác nhận đặt hàng, đơn hàng được xem là đã phát sinh hiệu lực giao dịch</li>
-                        <li>Giá hiển thị bao gồm: giá món/dịch vụ, phí giao hàng, các phụ phí (nếu có)</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-ban"></i> 3. Hủy đơn & hoàn tiền</h3>
-                    <ul>
-                        <li>Người dùng chỉ được hủy đơn trong các trạng thái hệ thống cho phép</li>
-                        <li>Trường hợp nhà hàng đã chuẩn bị món hoặc shipper đã nhận đơn, Crabor có quyền từ chối hoàn tiền hoặc hoàn một phần</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-exclamation-triangle"></i> 4. Trách nhiệm & giới hạn trách nhiệm</h3>
-                    <p>Crabor không chịu trách nhiệm đối với:</p>
-                    <ul>
-                        <li>Chất lượng, an toàn thực phẩm</li>
-                        <li>Dị ứng, vấn đề sức khỏe cá nhân</li>
-                        <li>Hành vi cá nhân của shipper hoặc đối tác</li>
-                        <li>Thiệt hại gián tiếp, mất mát ngoài phạm vi giao dịch</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-database"></i> 5. Dữ liệu cá nhân</h3>
-                    <p>Crabor thu thập và sử dụng dữ liệu người dùng nhằm:</p>
-                    <ul>
-                        <li>Vận hành dịch vụ</li>
-                        <li>Cải thiện trải nghiệm</li>
-                        <li>Marketing và chăm sóc khách hàng</li>
-                    </ul>
-                    <p>Crabor cam kết bảo mật dữ liệu theo quy định pháp luật hiện hành.</p>
-                </div>
-            </div>
-            
-            <!-- Tab Đối Tác -->
-            <div id="partner-tab" class="legal-content">
-                <h2 class="policy-title"><i class="fas fa-store"></i> PHẦN III. CHÍNH SÁCH DÀNH CHO ĐỐI TÁC (NHÀ HÀNG)</h2>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-handshake"></i> 1. Điều kiện hợp tác</h3>
-                    <ul>
-                        <li>Có giấy phép kinh doanh hợp pháp</li>
-                        <li>Đảm bảo an toàn vệ sinh thực phẩm</li>
-                        <li>Chịu trách nhiệm về nguồn gốc và chất lượng sản phẩm</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-money-bill-wave"></i> 2. Hoa hồng & thanh toán</h3>
-                    <ul>
-                        <li>Crabor thu 20% hoa hồng trên mỗi đơn hàng thành công</li>
-                        <li>Thanh toán cho đối tác được thực hiện theo chu kỳ do Crabor quy định</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-clipboard-check"></i> 3. Nghĩa vụ đối tác</h3>
-                    <ul>
-                        <li>Cung cấp món đúng mô tả, đúng giá</li>
-                        <li>Chuẩn bị món đúng thời gian cam kết</li>
-                        <li>Không tự ý hủy đơn hoặc gian lận</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-image"></i> 4. Nội dung & thương hiệu</h3>
-                    <p>Đối tác đồng ý cho Crabor sử dụng:</p>
-                    <ul>
-                        <li>Tên thương hiệu</li>
-                        <li>Logo</li>
-                        <li>Hình ảnh sản phẩm</li>
-                    </ul>
-                    <p>cho mục đích hiển thị, marketing trên nền tảng.</p>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-times-circle"></i> 5. Chấm dứt hợp tác</h3>
-                    <p>Crabor có quyền tạm ngưng hoặc chấm dứt hợp tác nếu đối tác:</p>
-                    <ul>
-                        <li>Vi phạm pháp luật</li>
-                        <li>Gian lận</li>
-                        <li>Gây ảnh hưởng nghiêm trọng đến uy tín nền tảng</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Tab Shipper -->
-            <div id="shipper-tab" class="legal-content">
-                <h2 class="policy-title"><i class="fas fa-motorcycle"></i> PHẦN IV. CHÍNH SÁCH DÀNH CHO SHIPPER</h2>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-id-card"></i> 1. Tư cách pháp lý</h3>
-                    <ul>
-                        <li>Shipper là đối tác độc lập, không phải nhân viên của Crabor</li>
-                        <li>Tự chịu trách nhiệm về thuế, bảo hiểm và rủi ro cá nhân</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-credit-card"></i> 2. Phí đăng ký</h3>
-                    <ul>
-                        <li>Phí đăng ký ban đầu: 700.000 VNĐ</li>
-                        <li>Bao gồm: kích hoạt tài khoản, đồng phục, xác minh & lưu lưu trữ và xác minh thông tin giấy tờ cần thiết</li>
-                    </ul>
-                    <div class="policy-warning">
-                        <strong>Lưu ý quan trọng:</strong> Phí 700.000 VNĐ là phí kích hoạt dịch vụ, không phải tiền đặt cọc lao động.
+                    
+                    <div class="content-text">
+                        <p><strong>Thành tựu đã đạt được:</strong></p>
+                        <ul>
+                            <li>✅ Server Express.js hoạt động ổn định</li>
+                            <li>✅ Kết nối Cloud Database thành công</li>
+                            <li>✅ Session management với persistent storage</li>
+                            <li>✅ CORS configuration cho multi-origin</li>
+                            <li>✅ Modular architecture với separation of concerns</li>
+                        </ul>
                     </div>
-                </div>
+                </section>
                 
-                <div class="policy-section">
-                    <h3><i class="fas fa-chart-line"></i> 3. Thu nhập & khấu trừ</h3>
-                    <ul>
-                        <li>Phí giao hàng được tính theo khoảng cách: ~3.000đ/km (giai đoạn đầu)</li>
-                        <li>Crabor khấu trừ 10% phí giao hàng như phí nền tảng</li>
-                    </ul>
-                </div>
+                <!-- API Modules -->
+                <section class="card">
+                    <h2><i class="fas fa-plug"></i> API Modules</h2>
+                    <div class="content-text">
+                        <p>Hệ thống đã được phân thành các module độc lập:</p>
+                        
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-user-shield"></i>
+                                </div>
+                                <div><strong>Auth Module</strong><br>Xác thực & phân quyền người dùng</div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <div><strong>Orders Module</strong><br>Quản lý vòng đời đơn hàng</div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <div><strong>Products Module</strong><br>Quản lý menu và sản phẩm</div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div><strong>Analytics Module</strong><br>Thống kê và báo cáo</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <p><i class="fas fa-exchange-alt"></i> <strong>API Endpoints:</strong> Tất cả APIs đều theo chuẩn RESTful với prefix <code>/api/</code>. Mỗi module có routes riêng biệt, dễ quản lý và mở rộng.</p>
+                        </div>
+                    </div>
+                </section>
                 
-                <div class="policy-section">
-                    <h3><i class="fas fa-tasks"></i> 4. Nghĩa vụ shipper</h3>
-                    <ul>
-                        <li>Giao hàng đúng đơn, đúng người nhận</li>
-                        <li>Không gian lận GPS, không nhận tiền ngoài hệ thống</li>
-                        <li>Tuân thủ luật giao thông và quy định ứng dụng</li>
-                    </ul>
-                </div>
+                <!-- Real-time Features -->
+                <section class="card">
+                    <h2><i class="fas fa-bolt"></i> Real-time System</h2>
+                    <div class="progress-section">
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span class="progress-label">Socket.io Integration</span>
+                                <span class="progress-status status-done">Hoàn thành</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="realtime-progress1"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span class="progress-label">Order Tracking</span>
+                                <span class="progress-status status-in-progress">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="realtime-progress2"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="progress-item">
+                            <div class="progress-info">
+                                <span class="progress-label">Notifications</span>
+                                <span class="progress-status status-in-progress">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="realtime-progress3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-text">
+                        <p><strong>Tính năng real-time đã implement:</strong></p>
+                        <ul>
+                            <li>📍 <span class="highlight">Live location tracking</span> của shipper</li>
+                            <li>🔄 <span class="highlight">Instant order status updates</span></li>
+                            <li>🔔 <span class="highlight">Real-time notifications</span> cho admin</li>
+                            <li>👥 <span class="highlight">Room-based communication</span> cho mỗi đơn hàng</li>
+                        </ul>
+                        
+                        <p>Hệ thống sử dụng WebSocket thông qua Socket.io, cho phép cập nhật dữ liệu theo thời gian thực mà không cần refresh trang.</p>
+                    </div>
+                </section>
                 
-                <div class="policy-section">
-                    <h3><i class="fas fa-gavel"></i> 5. Kỷ luật & xử lý vi phạm</h3>
-                    <p>Crabor có quyền:</p>
-                    <ul>
-                        <li>Cảnh cáo</li>
-                        <li>Tạm khóa</li>
-                        <li>Khóa vĩnh viễn tài khoản shipper</li>
-                    </ul>
-                    <p>trong trường hợp vi phạm nghiêm trọng, không cần báo trước.</p>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-shield-alt"></i> 6. Miễn trừ trách nhiệm</h3>
-                    <p>Crabor không chịu trách nhiệm đối với:</p>
-                    <ul>
-                        <li>Tai nạn giao thông</li>
-                        <li>Tranh chấp giữa shipper và người dùng</li>
-                        <li>Vi phạm pháp luật cá nhân của shipper</li>
-                    </ul>
-                </div>
-                
-                <h3 class="policy-subtitle">BỔ SUNG QUY ĐỊNH VỀ PHÍ KÍCH HOẠT TÀI KHOẢN SHIPPER (700.000 VNĐ)</h3>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-info-circle"></i> 1. Bản chất của phí 700.000 VNĐ</h3>
-                    <ul>
-                        <li>Phí 700.000 VNĐ là chi phí cố định để kích hoạt và duy trì trạng thái hoạt động của tài khoản Shipper</li>
-                        <li>Khoản phí này không phải tiền lương, tiền đặt cọc lao động, hay bảo đảm thực hiện nghĩa vụ lao động</li>
-                        <li>Phí bao gồm: kích hoạt tài khoản, cấp quyền truy cập ứng dụng, đồng phục, xác minh thông tin, hỗ trợ vận hành</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-lock"></i> 4. Khóa tài khoản do không duy trì đủ phí kích hoạt</h3>
-                    <ul>
-                        <li>Khi tài khoản bị khóa do không đủ điều kiện phí kích hoạt, Shipper không thể nhận đơn, truy cập chức năng vận hành</li>
-                        <li>Việc mở lại tài khoản yêu cầu bổ sung đủ phí kích hoạt theo mức hiện hành</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-times-circle"></i> 5. Không hoàn lại phí trong đa số trường hợp</h3>
-                    <ul>
-                        <li>Phí kích hoạt 700.000 VNĐ không được hoàn lại trong trường hợp Shipper tự ý ngừng hoạt động hoặc vi phạm điều khoản</li>
-                        <li>Trường hợp hoàn phí chỉ được xem xét khi lỗi hoàn toàn phát sinh từ hệ thống Crabor</li>
-                    </ul>
-                </div>
+                <!-- Frontend Status -->
+                <section class="card">
+                    <h2><i class="fas fa-desktop"></i> Frontend Interfaces</h2>
+                    <div class="content-text">
+                        <p>4 giao diện riêng biệt đã được thiết kế:</p>
+                        
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div><strong>Customer Interface</strong><br>Đặt món, theo dõi đơn hàng</div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-motorcycle"></i>
+                                </div>
+                                <div><strong>Shipper Interface</strong><br>Nhận đơn, cập nhật vị trí</div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <div><strong>Partner Interface</strong><br>Quản lý menu, đơn hàng</div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div><strong>Admin Interface</strong><br>Quản trị hệ thống, analytics</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-box">
+                            <p><i class="fas fa-map-signs"></i> <strong>Routing Structure:</strong> Mỗi giao diện có route riêng, tải HTML file tương ứng. Kiến trúc này cho phép phát triển frontend độc lập cho từng user role.</p>
+                        </div>
+                    </div>
+                </section>
             </div>
             
-            <!-- Tab Giải Quyết Tranh Chấp -->
-            <div id="dispute-tab" class="legal-content">
-                <h2 class="policy-title"><i class="fas fa-balance-scale"></i> PHẦN V. GIẢI QUYẾT TRANH CHẤP & SỰ CỐ</h2>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-users"></i> 1. Nguyên tắc chung</h3>
-                    <ul>
-                        <li>Crabor đóng vai trò nền tảng trung gian</li>
-                        <li>Mọi sự cố được xử lý trên nguyên tắc: minh bạch – có bằng chứng – theo mức độ lỗi</li>
-                        <li>Crabor có quyền đưa ra quyết định cuối cùng dựa trên dữ liệu hệ thống</li>
-                    </ul>
+            <!-- Next Steps -->
+            <section class="card">
+                <h2><i class="fas fa-road"></i> Kế Hoạch Phát Triển</h2>
+                <div class="content-text">
+                    <p><strong>Giai đoạn tiếp theo (2-4 tuần tới):</strong></p>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div><strong>Security Hardening</strong><br>Hoàn thiện authentication, authorization</div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div><strong>Payment Integration</strong><br>Tích hợp cổng thanh toán</div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div><strong>Responsive UI</strong><br>Tối ưu giao diện cho mobile</div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-vial"></i>
+                            </div>
+                            <div><strong>Testing Suite</strong><br>Unit tests, integration tests</div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box warning">
+                        <p><i class="fas fa-exclamation-triangle"></i> <strong>Ưu tiên hiện tại:</strong> Hoàn thiện authentication system và payment gateway integration trước khi chuyển sang phát triển tính năng nâng cao.</p>
+                    </div>
+                    
+                    <p class="conclusion">Với <span class="highlight">42 commits</span> trên repository chính và kiến trúc vững chắc đã được xây dựng, dự án Crabor đang trên đà phát triển tốt. Các tính năng cốt lõi đã sẵn sàng, hệ thống có thể chạy được và mở rộng dễ dàng.</p>
                 </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-exclamation-circle"></i> 2. Các loại sự cố phổ biến</h3>
-                    <p><strong>Đối với người dùng:</strong></p>
-                    <ul>
-                        <li>Giao thiếu/sai món</li>
-                        <li>Món kém chất lượng, đổ vỡ</li>
-                        <li>Giao hàng trễ</li>
-                        <li>Shipper có hành vi không phù hợp</li>
-                    </ul>
-                    
-                    <p><strong>Đối với đối tác:</strong></p>
-                    <ul>
-                        <li>Shipper không đến lấy hàng</li>
-                        <li>Đơn bị hủy không hợp lệ</li>
-                        <li>Gian lận khuyến mãi từ người dùng</li>
-                    </ul>
-                    
-                    <p><strong>Đối với shipper:</strong></p>
-                    <ul>
-                        <li>Khách không nhận hàng</li>
-                        <li>Địa chỉ sai</li>
-                        <li>Đối tác chuẩn bị món chậm</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-clipboard-list"></i> 3. Quy trình khiếu nại</h3>
-                    <ul>
-                        <li>Khiếu nại phải được gửi trong vòng 24 giờ kể từ thời điểm hoàn tất/hủy đơn</li>
-                        <li>Cung cấp đầy đủ bằng chứng: hình ảnh, chat, lịch sử đơn</li>
-                        <li>Crabor có thời gian xử lý từ 3–7 ngày làm việc</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-money-bill-wave"></i> PHẦN VIII. CHÍNH SÁCH HOÀN TIỀN</h3>
-                    
-                    <p><strong>1. Trường hợp được hoàn tiền:</strong></p>
-                    <ul>
-                        <li>Đơn bị hủy do lỗi hệ thống</li>
-                        <li>Đối tác xác nhận không thể cung cấp dịch vụ</li>
-                        <li>Shipper không thể hoàn thành đơn và không có shipper thay thế</li>
-                    </ul>
-                    
-                    <p><strong>2. Trường hợp không hoàn tiền:</strong></p>
-                    <ul>
-                        <li>Người dùng hủy đơn sau khi đối tác đã chuẩn bị món</li>
-                        <li>Shipper đã nhận đơn và đang giao</li>
-                        <li>Lý do cá nhân từ phía người dùng</li>
-                    </ul>
-                    
-                    <p><strong>3. Hình thức hoàn tiền:</strong></p>
-                    <ul>
-                        <li>Hoàn về phương thức thanh toán ban đầu hoặc ví Crabor (nếu có)</li>
-                        <li>Thời gian xử lý: 5–10 ngày làm việc</li>
-                    </ul>
-                </div>
-            </div>
+            </section>
             
-            <!-- Tab Pháp Lý TMĐT -->
-            <div id="legal-tab" class="legal-content">
-                <h2 class="policy-title"><i class="fas fa-scale-balanced"></i> PHẦN XII. CHUẨN HÓA PHÁP LÝ THEO QUY ĐỊNH TMĐT VIỆT NAM</h2>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-building"></i> 1. Vai trò của Crabor</h3>
-                    <ul>
-                        <li>Crabor là sàn giao dịch thương mại điện tử theo Nghị định 52/2013/NĐ-CP (và văn bản sửa đổi)</li>
-                        <li>Crabor không trực tiếp bán hàng, không trực tiếp tuyển dụng Shipper</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-info-circle"></i> 2. Nghĩa vụ công khai thông tin</h3>
-                    <p>Crabor công khai đầy đủ:</p>
-                    <ul>
-                        <li>Thông tin pháp nhân vận hành</li>
-                        <li>Điều khoản sử dụng</li>
-                        <li>Chính sách thanh toán, hoàn tiền, khiếu nại</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-user-shield"></i> 3. Bảo vệ người tiêu dùng</h3>
-                    <ul>
-                        <li>Có cơ chế tiếp nhận và xử lý phản ánh</li>
-                        <li>Lưu trữ lịch sử giao dịch tối thiểu theo quy định pháp luật</li>
-                    </ul>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-file-signature"></i> 4. Đăng ký Bộ Công Thương</h3>
-                    <p>Crabor thực hiện thủ tục đăng ký sàn TMĐT tại Cổng thông tin Bộ Công Thương. Các chính sách trong bộ này là căn cứ pháp lý khi nộp hồ sơ.</p>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-flag"></i> PHẦN VI. HIỆU LỰC</h3>
-                    <p>Điều khoản này có hiệu lực kể từ ngày được công bố trên nền tảng Crabor.</p>
-                    <p>Người dùng, đối tác và shipper có trách nhiệm đọc kỹ trước khi sử dụng dịch vụ.</p>
-                </div>
-            </div>
-            
-            <!-- Tab FAQ -->
-            <div id="faq-tab" class="legal-content">
-                <h2 class="policy-title"><i class="fas fa-question-circle"></i> PHẦN X. FAQ PHÁP LÝ (CÂU HỎI THƯỜNG GẶP)</h2>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-utensils"></i> 1. Crabor có chịu trách nhiệm về chất lượng đồ ăn không?</h3>
-                    <p><strong>Không.</strong> Trách nhiệm thuộc về đối tác cung cấp.</p>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-user-tie"></i> 2. Shipper có phải nhân viên Crabor không?</h3>
-                    <p><strong>Không.</strong> Shipper là đối tác độc lập.</p>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-money-bill"></i> 3. Phí đăng ký shipper có được hoàn lại không?</h3>
-                    <p>Phí đăng ký không hoàn lại trừ khi có chính sách đặc biệt được công bố riêng.</p>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-lock"></i> 4. Crabor có quyền khóa tài khoản không cần báo trước không?</h3>
-                    <p><strong>Có,</strong> trong trường hợp vi phạm nghiêm trọng hoặc ảnh hưởng đến hệ thống.</p>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-shield-alt"></i> 5. Dữ liệu cá nhân của tôi có được bảo mật không?</h3>
-                    <p>Crabor cam kết bảo mật theo quy định pháp luật Việt Nam.</p>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-handshake"></i> 6. Khi có tranh chấp thì giải quyết thế nào?</h3>
-                    <p>Ưu tiên thương lượng, nếu không thành sẽ giải quyết theo pháp luật Việt Nam.</p>
-                </div>
-                
-                <h3 class="policy-subtitle">FAQ RIÊNG DÀNH CHO NGƯỜI DÙNG</h3>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-store"></i> Crabor có phải là bên bán đồ ăn không?</h3>
-                    <p><strong>Không.</strong> Crabor là nền tảng trung gian kết nối Người dùng với Đối tác.</p>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-times-circle"></i> Vì sao tôi không được hoàn tiền khi hủy đơn?</h3>
-                    <p>Nếu đơn đã được Đối tác chuẩn bị hoặc Shipper đã nhận giao, hệ thống có thể từ chối hoàn tiền.</p>
-                </div>
-                
-                <h3 class="policy-subtitle">FAQ RIÊNG DÀNH CHO ĐỐI TÁC</h3>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-percent"></i> Crabor thu bao nhiêu % hoa hồng?</h3>
-                    <p>Hiện tại là 20%/đơn hàng, có thể điều chỉnh theo thỏa thuận.</p>
-                </div>
-                
-                <div class="policy-section">
-                    <h3><i class="fas fa-ban"></i> Tôi có thể tự ý hủy đơn không?</h3>
-                    <p><strong>Không.</strong> Việc hủy đơn không hợp lệ có thể bị phạt hoặc giảm hiển thị.</p>
-                </div>
-            </div>
+            <footer>
+                <p>© 2026 Dự Án Crabor. Tài liệu kỹ thuật nội bộ.</p>
+                <p>Last Updated: <strong>Tháng 1, 2026</strong> | Repository: <strong>42 Commits</strong> | Status: <strong>Active Development</strong></p>
+            </footer>
         </div>
     </div>
 
     <script>
-        // Khởi tạo thanh tiến trình với hiệu ứng
         document.addEventListener('DOMContentLoaded', function() {
-            const progressItems = [
+            // Home page progress bars
+            const homeProgressItems = [
                 { id: 'progress1', value: 100 },
                 { id: 'progress2', value: 100 },
-                { id: 'progress3', value: 100 },
-                { id: 'progress4', value: 30 },
-                { id: 'progress5', value: 25 },
-                { id: 'progress6', value: 15 }
+                { id: 'progress3', value: 85 },
+                { id: 'progress4', value: 80 },
+                { id: 'progress5', value: 40 },
+                { id: 'progress6', value: 30 }
             ];
             
-            // Hiệu ứng load thanh tiến trình
+            // Tech page progress bars
+            const techProgressItems = [
+                { id: 'tech-progress1', value: 100 },
+                { id: 'tech-progress2', value: 100 },
+                { id: 'tech-progress3', value: 85 },
+                { id: 'tech-progress4', value: 80 },
+                { id: 'realtime-progress1', value: 100 },
+                { id: 'realtime-progress2', value: 90 },
+                { id: 'realtime-progress3', value: 75 }
+            ];
+            
+            // Load progress bars with animation
             setTimeout(() => {
-                progressItems.forEach(item => {
+                homeProgressItems.forEach(item => {
+                    const progressFill = document.getElementById(item.id);
+                    if (progressFill) {
+                        progressFill.style.width = item.value + '%';
+                    }
+                });
+                
+                techProgressItems.forEach(item => {
                     const progressFill = document.getElementById(item.id);
                     if (progressFill) {
                         progressFill.style.width = item.value + '%';
@@ -1212,7 +979,41 @@
                 });
             }, 500);
             
-            // Thêm hiệu ứng cho các card khi cuộn trang
+            // Menu functionality
+            const menuButton = document.getElementById('menuButton');
+            const menuDropdown = document.getElementById('menuDropdown');
+            
+            menuButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menuDropdown.classList.toggle('active');
+            });
+            
+            document.addEventListener('click', () => {
+                menuDropdown.classList.remove('active');
+            });
+            
+            menuDropdown.addEventListener('click', (e) => {
+                e.stopPropagation();
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    menuDropdown.classList.remove('active');
+                }
+            });
+            
+            // Page navigation
+            window.showPage = function(page) {
+                document.querySelectorAll('.page-content').forEach(p => {
+                    p.classList.remove('active');
+                });
+                
+                document.getElementById(page + '-page').classList.add('active');
+                menuDropdown.classList.remove('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+            
+            // Animation for cards
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -1227,7 +1028,6 @@
                 });
             }, observerOptions);
             
-            // Áp dụng hiệu ứng cho tất cả card
             document.querySelectorAll('.card').forEach(card => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
@@ -1235,79 +1035,13 @@
                 observer.observe(card);
             });
             
-            // Xử lý menu dropdown
-            const menuButton = document.getElementById('menuButton');
-            const menuDropdown = document.getElementById('menuDropdown');
-            
-            // Mở/đóng menu dropdown
-            menuButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-                menuDropdown.classList.toggle('active');
-            });
-            
-            // Đóng menu khi click ra ngoài
-            document.addEventListener('click', () => {
-                menuDropdown.classList.remove('active');
-            });
-            
-            // Ngăn đóng menu khi click vào menu
-            menuDropdown.addEventListener('click', (e) => {
-                e.stopPropagation();
-            });
-            
-            // Đóng menu bằng phím ESC
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    menuDropdown.classList.remove('active');
+            // Auto-update current year in footer
+            const currentYear = new Date().getFullYear();
+            document.querySelectorAll('footer p').forEach(p => {
+                if (p.innerHTML.includes('2026')) {
+                    p.innerHTML = p.innerHTML.replace('2026', currentYear);
                 }
             });
-            
-            // Xử lý chuyển trang
-            window.showPage = function(page) {
-                // Ẩn tất cả các trang
-                document.querySelectorAll('.page-content').forEach(p => {
-                    p.classList.remove('active');
-                });
-                
-                // Hiển thị trang được chọn
-                document.getElementById(page + '-page').classList.add('active');
-                
-                // Đóng menu dropdown
-                menuDropdown.classList.remove('active');
-                
-                // Cuộn lên đầu trang
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                // Nếu là trang legal, khởi tạo tabs
-                if (page === 'legal') {
-                    initializeLegalTabs();
-                }
-            };
-            
-            // Khởi tạo tabs cho trang legal
-            function initializeLegalTabs() {
-                const legalTabs = document.querySelectorAll('.legal-tab');
-                const legalContents = document.querySelectorAll('.legal-content');
-                
-                legalTabs.forEach(tab => {
-                    tab.addEventListener('click', () => {
-                        const tabId = tab.getAttribute('data-tab');
-                        
-                        // Xóa active class từ tất cả tabs và contents
-                        legalTabs.forEach(t => t.classList.remove('active'));
-                        legalContents.forEach(content => content.classList.remove('active'));
-                        
-                        // Thêm active class cho tab và content được chọn
-                        tab.classList.add('active');
-                        document.getElementById(tabId).classList.add('active');
-                    });
-                });
-            }
-            
-            // Khởi tạo tabs nếu đang ở trang legal
-            if (document.getElementById('legal-page').classList.contains('active')) {
-                initializeLegalTabs();
-            }
         });
     </script>
 </body>
