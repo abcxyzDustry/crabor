@@ -158,6 +158,30 @@
             box-shadow: 0 5px 15px rgba(93, 140, 62, 0.4);
         }
         
+        /* Demo Button */
+        .demo-btn {
+            background: linear-gradient(135deg, #5D8C3E 0%, #4CAF50 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(93, 140, 62, 0.4);
+            margin: 10px 0;
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(93, 140, 62, 0.6);
+            background: linear-gradient(135deg, #4a7032 0%, #388E3C 100%);
+        }
+        
         /* Header Styles */
         header {
             text-align: center;
@@ -383,6 +407,57 @@
             background-color: #2196f3;
         }
         
+        /* Access Guide */
+        .access-guide {
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .access-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            background-color: #f9f9f9;
+            transition: all 0.2s ease;
+        }
+        
+        .access-item:last-child {
+            border-bottom: none;
+        }
+        
+        .access-item:hover {
+            background-color: #f1f8e9;
+        }
+        
+        .access-role {
+            flex: 0 0 140px;
+            font-weight: 600;
+            color: #5D8C3E;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .access-role:before {
+            content: "→";
+            color: #5D8C3E;
+        }
+        
+        .access-url {
+            flex: 1;
+            font-family: monospace;
+            background-color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            font-size: 0.9rem;
+            color: #333;
+            word-break: break-all;
+        }
+        
         @keyframes pulse {
             0% { opacity: 1; }
             50% { opacity: 0.6; }
@@ -457,6 +532,21 @@
                 top: 75px;
                 right: 20px;
             }
+            
+            .access-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .access-role {
+                flex: none;
+                width: 100%;
+            }
+            
+            .access-url {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -477,6 +567,10 @@
         <button class="menu-item" onclick="showPage('tech')">
             <i class="fas fa-code"></i>
             <span>Tiến Độ Ứng Dụng</span>
+        </button>
+        <button class="menu-item" onclick="openDemoApp()">
+            <i class="fas fa-external-link-alt"></i>
+            <span>Truy cập ứng dụng</span>
         </button>
     </div>
     
@@ -591,6 +685,47 @@
                     </div>
                 </section>
                 
+                <!-- Truy cập ứng dụng demo -->
+                <section class="card">
+                    <h2><i class="fas fa-external-link-alt"></i> Truy Cập Ứng Dụng Demo</h2>
+                    <div class="content-text">
+                        <div class="info-box" style="background-color: #e3f2fd; border-color: #90caf9;">
+                            <p><i class="fas fa-rocket"></i> <strong>Demo đã sẵn sàng:</strong> Ứng dụng Crabor đã được deploy và có thể truy cập trực tiếp!</p>
+                        </div>
+                        
+                        <div style="text-align: center; margin: 25px 0;">
+                            <button class="demo-btn" onclick="openDemoApp()">
+                                <i class="fas fa-external-link-alt"></i>
+                                Truy Cập Ứng Dụng Demo
+                            </button>
+                        </div>
+                        
+                        <h3 style="color: #5D8C3E; margin-top: 20px;">Hướng Dẫn Truy Cập Các Giao Diện:</h3>
+                        <div class="access-guide">
+                            <div class="access-item">
+                                <div class="access-role">Khách Hàng</div>
+                                <div class="access-url">https://crabor-com.onrender.com/</div>
+                            </div>
+                            <div class="access-item">
+                                <div class="access-role">Quản Trị Viên</div>
+                                <div class="access-url">https://crabor-com.onrender.com/admin</div>
+                            </div>
+                            <div class="access-item">
+                                <div class="access-role">Shipper</div>
+                                <div class="access-url">https://crabor-com.onrender.com/shipper</div>
+                            </div>
+                            <div class="access-item">
+                                <div class="access-role">Đối Tác</div>
+                                <div class="access-url">https://crabor-com.onrender.com/partner</div>
+                            </div>
+                        </div>
+                        
+                        <div class="info-box" style="margin-top: 20px;">
+                            <p><i class="fas fa-info-circle"></i> <strong>Lưu ý:</strong> Ứng dụng demo được host trên Render với tính năng free tier, có thể mất vài giây để khởi động lần đầu truy cập.</p>
+                        </div>
+                    </div>
+                </section>
+                
                 <!-- Cạnh tranh & thị trường -->
                 <section class="card">
                     <h2><i class="fas fa-bullseye"></i> Thị Trường & Đối Thủ Cạnh Tranh</h2>
@@ -680,7 +815,7 @@
             
             <footer>
                 <p>© 2026 Dự Án Crabor. Tài liệu nội bộ - Bảo mật thông tin.</p>
-                <p>Trạng thái: <strong>Hệ thống pháp lý hoàn thành 100% | Backend đang hoạt động | Ứng dụng đang phát triển</strong></p>
+                <p>Trạng thái: <strong>Hệ thống pháp lý hoàn thành 100% | Backend đang hoạt động | Ứng dụng đang phát triển | Demo có sẵn</strong></p>
             </footer>
         </div>
     </div>
@@ -833,12 +968,19 @@
                     <div class="info-box">
                         <p><i class="fas fa-code-branch"></i> <strong>Development Status:</strong> Dự án đang trong giai đoạn <span class="highlight">active development</span>. Backend core đã hoàn thành, frontend đang được phát triển. Ứng dụng có kiến trúc vững chắc, sẵn sàng cho việc thêm các tính năng mới và scaling.</p>
                     </div>
+                    
+                    <div style="text-align: center; margin: 25px 0;">
+                        <button class="demo-btn" onclick="openDemoApp()">
+                            <i class="fas fa-external-link-alt"></i>
+                            Truy Cập Ứng Dụng Demo
+                        </button>
+                    </div>
                 </div>
             </section>
             
             <footer>
                 <p>© 2026 Dự Án Crabor. Tài liệu kỹ thuật nội bộ.</p>
-                <p>Trạng thái: <strong>Backend hoạt động | Real-time tích hợp | Đang phát triển frontend</strong></p>
+                <p>Trạng thái: <strong>Backend hoạt động | Real-time tích hợp | Đang phát triển frontend | Demo có sẵn</strong></p>
             </footer>
         </div>
     </div>
@@ -896,6 +1038,11 @@
                 document.getElementById(page + '-page').classList.add('active');
                 menuDropdown.classList.remove('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+            
+            // Open demo app
+            window.openDemoApp = function() {
+                window.open('https://crabor-com.onrender.com/', '_blank');
             };
             
             // Card animations
