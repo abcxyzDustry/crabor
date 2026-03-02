@@ -14,7 +14,7 @@
         }
         
         body {
-            background: radial-gradient(circle at 0% 0%, #1a1f2e, #0b0e14);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -26,32 +26,25 @@
         }
         
         body.authenticated {
-            background: radial-gradient(circle at 100% 100%, #1e2436, #0c0f17);
+            background: #f8f9fa;
             overflow: auto;
         }
         
-        /* Liquid Glass Background Effects */
+        /* Background Pattern */
         body::before {
             content: '';
             position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle at 30% 30%, rgba(100, 200, 255, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(180, 130, 255, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 10% 90%, rgba(0, 255, 200, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 90% 10%, rgba(255, 100, 200, 0.1) 0%, transparent 50%);
-            animation: liquidMove 20s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
             pointer-events: none;
         }
         
-        @keyframes liquidMove {
-            0% { transform: translate(-10%, -10%) rotate(0deg); }
-            33% { transform: translate(5%, -5%) rotate(2deg); }
-            66% { transform: translate(-5%, 5%) rotate(-2deg); }
-            100% { transform: translate(-10%, -10%) rotate(0deg); }
-        }
-        
-        /* Animated Grid Overlay */
+        /* Animated Grid */
         .grid-overlay {
             position: absolute;
             top: 0;
@@ -59,198 +52,122 @@
             width: 100%;
             height: 100%;
             background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
-            animation: gridFloat 15s linear infinite;
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
             pointer-events: none;
         }
         
-        @keyframes gridFloat {
-            0% { transform: perspective(500px) rotateX(0deg) translateY(0); }
-            100% { transform: perspective(500px) rotateX(1deg) translateY(-30px); }
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
         
-        /* Auth Container - Liquid Glass Style */
+        /* Auth Container */
         .auth-container {
             max-width: 450px;
             width: 100%;
-            background: rgba(20, 25, 35, 0.6);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
             box-shadow: 
-                0 30px 60px -15px rgba(0, 0, 0, 0.8),
-                0 0 0 1px rgba(255, 255, 255, 0.1) inset,
-                0 0 40px rgba(0, 200, 255, 0.2);
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.2) inset;
             padding: 40px;
             position: relative;
             z-index: 10;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            animation: glassAppear 0.8s cubic-bezier(0.2, 0.9, 0.3, 1.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: containerAppear 0.8s cubic-bezier(0.23, 1, 0.32, 1);
             text-align: center;
-            overflow: hidden;
-        }
-        
-        .auth-container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1), transparent 70%);
-            animation: liquidSwirl 12s linear infinite;
-            pointer-events: none;
-        }
-        
-        @keyframes liquidSwirl {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.2); }
-            100% { transform: rotate(360deg) scale(1); }
         }
         
         .auth-container.hidden {
             display: none;
         }
         
-        /* Main Container - Dark Glass */
+        /* Main Container (Project Page) */
         .main-container {
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
-            background: rgba(15, 20, 28, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 30px;
-            box-shadow: 
-                0 25px 50px -12px rgba(0, 0, 0, 0.8),
-                0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             padding: 30px;
             position: relative;
             display: none;
-            animation: fadeInGlass 0.8s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.8s ease;
         }
         
         .main-container.active {
             display: block;
         }
         
-        @keyframes fadeInGlass {
-            from { 
-                opacity: 0; 
-                transform: translateY(20px) scale(0.95);
-                backdrop-filter: blur(5px);
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0) scale(1);
-                backdrop-filter: blur(20px);
-            }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        @keyframes glassAppear {
+        @keyframes containerAppear {
             0% {
                 opacity: 0;
-                transform: scale(0.9) translateY(30px) rotate(-2deg);
-                backdrop-filter: blur(5px);
+                transform: scale(0.95) translateY(20px);
             }
             100% {
                 opacity: 1;
-                transform: scale(1) translateY(0) rotate(0);
-                backdrop-filter: blur(15px);
+                transform: scale(1) translateY(0);
             }
         }
         
-        /* Auth Logo - Neon Glass */
+        /* Auth Logo */
         .auth-logo {
             margin-bottom: 30px;
-            position: relative;
-            z-index: 2;
         }
         
         .auth-logo-icon {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, rgba(0, 200, 255, 0.3), rgba(150, 50, 255, 0.3));
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #5D8C3E, #4a7032);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
             box-shadow: 
-                0 20px 30px -10px rgba(0, 200, 255, 0.3),
-                0 0 0 2px rgba(255, 255, 255, 0.2) inset,
-                0 0 50px rgba(0, 200, 255, 0.4);
-            animation: liquidFloat 4s ease-in-out infinite;
-            backdrop-filter: blur(5px);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .auth-logo-icon::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent 70%);
-            animation: rotate 8s linear infinite;
+                0 20px 30px -10px rgba(93, 140, 62, 0.5),
+                0 0 0 5px rgba(255,255,255,0.2);
+            animation: float 3s ease-in-out infinite;
         }
         
         .auth-logo-icon i {
-            font-size: 4rem;
+            font-size: 3.5rem;
             color: white;
-            filter: drop-shadow(0 0 20px rgba(0, 200, 255, 0.8));
-            position: relative;
-            z-index: 2;
-            animation: iconPulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes iconPulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.9; }
-        }
-        
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
         }
         
         .auth-logo h2 {
-            font-size: 2.5rem;
-            background: linear-gradient(135deg, #00ccff, #aa55ff);
+            font-size: 2rem;
+            background: linear-gradient(135deg, #5D8C3E, #4a7032);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
-            text-shadow: 0 0 30px rgba(0, 200, 255, 0.5);
         }
         
         .auth-logo p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.95rem;
-            letter-spacing: 2px;
+            color: #666;
+            font-size: 0.9rem;
         }
         
-        @keyframes liquidFloat {
-            0%, 100% { 
-                transform: translateY(0) scale(1);
-                box-shadow: 0 20px 30px -10px rgba(0, 200, 255, 0.3), 0 0 0 2px rgba(255, 255, 255, 0.2) inset, 0 0 50px rgba(0, 200, 255, 0.4);
-            }
-            50% { 
-                transform: translateY(-15px) scale(1.02);
-                box-shadow: 0 30px 40px -10px rgba(150, 50, 255, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.3) inset, 0 0 70px rgba(150, 50, 255, 0.5);
-            }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         
         /* Auth Form */
         .auth-form {
             text-align: left;
             margin-top: 30px;
-            position: relative;
-            z-index: 2;
         }
         
         .form-group {
@@ -260,17 +177,15 @@
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            color: #333;
             font-size: 0.95rem;
-            letter-spacing: 0.5px;
         }
         
         .form-group label i {
-            color: #00ccff;
+            color: #5D8C3E;
             margin-right: 8px;
             width: 20px;
-            text-shadow: 0 0 10px #00ccff;
         }
         
         .input-wrapper {
@@ -282,80 +197,65 @@
         .input-wrapper i {
             position: absolute;
             left: 15px;
-            color: #00ccff;
+            color: #5D8C3E;
             font-size: 1.1rem;
-            text-shadow: 0 0 10px #00ccff;
-            z-index: 2;
         }
         
         .input-wrapper input {
             width: 100%;
-            padding: 16px 16px 16px 45px;
-            background: rgba(10, 15, 25, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
             font-size: 1rem;
             transition: all 0.3s ease;
-            color: white;
-            backdrop-filter: blur(5px);
+            background: rgba(255,255,255,0.9);
         }
         
         .input-wrapper input:focus {
-            border-color: #00ccff;
+            border-color: #5D8C3E;
             outline: none;
-            box-shadow: 0 0 0 3px rgba(0, 200, 255, 0.2), 0 0 20px rgba(0, 200, 255, 0.3);
-            background: rgba(10, 15, 25, 0.8);
-        }
-        
-        .input-wrapper input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 0 4px rgba(93, 140, 62, 0.1);
         }
         
         .toggle-password {
             position: absolute;
             right: 15px;
             cursor: pointer;
-            color: rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
-            z-index: 2;
+            color: #999;
+            transition: color 0.3s ease;
         }
         
         .toggle-password:hover {
-            color: #00ccff;
-            text-shadow: 0 0 10px #00ccff;
+            color: #5D8C3E;
         }
         
-        /* Security Notice - Glass Style */
+        /* Security Notice */
         .security-notice {
-            background: rgba(255, 200, 0, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 200, 0, 0.3);
-            border-radius: 15px;
+            background: linear-gradient(135deg, #fff3cd, #ffe69c);
+            border-left: 4px solid #ffc107;
+            border-radius: 10px;
             padding: 15px;
             margin: 20px 0;
             font-size: 0.9rem;
-            color: #ffd966;
+            color: #856404;
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 0 20px rgba(255, 200, 0, 0.1);
         }
         
         .security-notice i {
             font-size: 1.5rem;
-            color: #ffd966;
-            filter: drop-shadow(0 0 10px #ffd966);
+            color: #ffc107;
         }
         
-        /* Auth Button - Neon Glass */
+        /* Auth Button */
         .auth-btn {
             width: 100%;
-            background: linear-gradient(135deg, rgba(0, 200, 255, 0.3), rgba(150, 50, 255, 0.3));
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #5D8C3E, #4a7032);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: none;
             padding: 16px;
-            border-radius: 15px;
+            border-radius: 12px;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
@@ -365,80 +265,67 @@
             gap: 10px;
             transition: all 0.3s ease;
             margin-top: 20px;
-            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 200, 255, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .auth-btn::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3), transparent 70%);
-            animation: rotate 6s linear infinite;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .auth-btn:hover::before {
-            opacity: 1;
+            box-shadow: 0 10px 20px -5px rgba(93, 140, 62, 0.4);
         }
         
         .auth-btn:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.7), 0 0 50px rgba(0, 200, 255, 0.4);
-            border-color: rgba(255, 255, 255, 0.3);
-            background: linear-gradient(135deg, rgba(0, 200, 255, 0.4), rgba(150, 50, 255, 0.4));
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px rgba(93, 140, 62, 0.6);
+            background: linear-gradient(135deg, #4a7032, #3a5a27);
         }
         
         .auth-btn i {
             font-size: 1.2rem;
-            filter: drop-shadow(0 0 10px white);
         }
         
-        /* Error Message - Glass */
+        /* Error Message */
         .error-message {
-            background: rgba(255, 50, 50, 0.15);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 50, 50, 0.3);
-            color: #ff8888;
+            background: #fee;
+            color: #c33;
             padding: 12px;
-            border-radius: 12px;
+            border-radius: 8px;
             margin: 15px 0;
             font-size: 0.9rem;
             display: flex;
             align-items: center;
             gap: 10px;
+            border-left: 4px solid #c33;
             animation: shake 0.5s ease;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
         
         /* Auth Footer */
         .auth-footer {
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.4);
+            border-top: 1px dashed #ddd;
+            color: #999;
             font-size: 0.8rem;
         }
         
         .auth-footer i {
-            color: #ff6b9d;
+            color: #ff6b6b;
             animation: heartbeat 1.5s ease-in-out infinite;
-            filter: drop-shadow(0 0 10px #ff6b9d);
         }
         
-        /* Menu Button - Glass */
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        /* Menu Button (3 gạch) - GIỮ NGUYÊN */
         .menu-button {
             position: fixed;
             top: 30px;
             right: 30px;
-            width: 55px;
-            height: 55px;
-            background: rgba(20, 30, 45, 0.6);
-            backdrop-filter: blur(15px);
+            width: 50px;
+            height: 50px;
+            background-color: #5D8C3E;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
@@ -446,44 +333,39 @@
             align-items: center;
             cursor: pointer;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 200, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(93, 140, 62, 0.3);
             transition: all 0.3s ease;
         }
         
         .menu-button:hover {
-            transform: scale(1.05) rotate(90deg);
-            box-shadow: 0 4px 25px rgba(0, 200, 255, 0.4);
-            border-color: rgba(255, 255, 255, 0.3);
+            background-color: #4a7032;
+            transform: scale(1.05);
         }
         
         .menu-line {
             width: 25px;
-            height: 2px;
-            background: linear-gradient(90deg, #00ccff, #aa55ff);
+            height: 3px;
+            background-color: white;
             margin: 3px 0;
             border-radius: 2px;
             transition: all 0.3s ease;
-            box-shadow: 0 0 10px #00ccff;
         }
         
-        /* Menu Dropdown - Glass */
+        /* Menu Dropdown - GIỮ NGUYÊN */
         .menu-dropdown {
             position: fixed;
-            top: 95px;
+            top: 90px;
             right: 30px;
-            background: rgba(15, 20, 30, 0.8);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
             z-index: 1000;
             display: none;
-            min-width: 240px;
+            min-width: 220px;
             overflow: hidden;
             transform: translateY(-10px);
             opacity: 0;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.15);
         }
         
         .menu-dropdown.active {
@@ -497,10 +379,10 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            color: rgba(255, 255, 255, 0.9);
+            color: #333;
             text-decoration: none;
             transition: all 0.2s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid #f0f0f0;
             cursor: pointer;
             background: none;
             border: none;
@@ -514,31 +396,24 @@
         }
         
         .menu-item:hover {
-            background: rgba(0, 200, 255, 0.1);
-            color: #00ccff;
+            background-color: #f1f8e9;
+            color: #5D8C3E;
             padding-left: 30px;
-            text-shadow: 0 0 10px #00ccff;
         }
         
         .menu-item i {
             font-size: 1.2rem;
             width: 24px;
-            color: #00ccff;
-            filter: drop-shadow(0 0 5px #00ccff);
         }
         
         .menu-item.logout {
-            color: #ff8888;
-        }
-        
-        .menu-item.logout i {
-            color: #ff8888;
-            filter: drop-shadow(0 0 5px #ff8888);
+            color: #dc3545;
+            border-top: 1px solid #f0f0f0;
         }
         
         .menu-item.logout:hover {
-            background: rgba(255, 50, 50, 0.15);
-            color: #ffaaaa;
+            background-color: #fff5f5;
+            color: #c82333;
         }
         
         /* Page Content */
@@ -551,14 +426,13 @@
             animation: fadeIn 0.5s ease;
         }
         
-        /* Back Button - Glass */
+        /* Back Button - GIỮ cho các trang con */
         .back-btn {
-            background: rgba(0, 200, 255, 0.15);
-            backdrop-filter: blur(10px);
+            background-color: #5D8C3E;
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: none;
             padding: 12px 25px;
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 1rem;
             font-weight: 600;
@@ -567,24 +441,22 @@
             gap: 10px;
             margin-bottom: 30px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 10px rgba(93, 140, 62, 0.3);
         }
         
         .back-btn:hover {
-            background: rgba(0, 200, 255, 0.25);
+            background-color: #4a7032;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 200, 255, 0.2);
-            border-color: #00ccff;
+            box-shadow: 0 5px 15px rgba(93, 140, 62, 0.4);
         }
         
-        /* Demo Button - Glass */
+        /* Demo Button */
         .demo-btn {
-            background: linear-gradient(135deg, rgba(0, 200, 255, 0.3), rgba(150, 50, 255, 0.3));
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #5D8C3E 0%, #4CAF50 100%);
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: none;
             padding: 15px 35px;
-            border-radius: 15px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 1.1rem;
             font-weight: 600;
@@ -592,48 +464,39 @@
             align-items: center;
             gap: 12px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 200, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(93, 140, 62, 0.4);
+            margin: 10px 0;
         }
         
         .demo-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(0, 200, 255, 0.3);
-            border-color: #00ccff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(93, 140, 62, 0.6);
+            background: linear-gradient(135deg, #4a7032 0%, #388E3C 100%);
         }
         
-        /* Header Styles - Dark Glass */
+        /* Header Styles */
         header {
             text-align: center;
             padding: 30px 0;
             margin-bottom: 30px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 2px solid #5D8C3E;
         }
         
         .logo {
-            font-size: 4rem;
-            color: #00ccff;
+            font-size: 3rem;
+            color: #5D8C3E;
             margin-bottom: 15px;
-            filter: drop-shadow(0 0 30px #00ccff);
-            animation: logoFloat 3s ease-in-out infinite;
-        }
-        
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); filter: drop-shadow(0 0 30px #00ccff); }
-            50% { transform: translateY(-10px); filter: drop-shadow(0 0 50px #aa55ff); }
         }
         
         h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, #00ccff, #aa55ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px rgba(0, 200, 255, 0.3);
+            color: #5D8C3E;
         }
         
         .tagline {
             font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: #666;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -647,36 +510,32 @@
         }
         
         .card {
-            background: rgba(20, 25, 35, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
+            background-color: #fff;
+            border-radius: 8px;
             padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eaeaea;
+            transition: transform 0.2s ease;
         }
         
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 200, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-            border-color: rgba(0, 200, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         h2 {
             font-size: 1.6rem;
             margin-bottom: 20px;
-            color: #00ccff;
+            color: #5D8C3E;
             display: flex;
             align-items: center;
             gap: 10px;
             padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            text-shadow: 0 0 20px rgba(0, 200, 255, 0.3);
+            border-bottom: 1px solid #eee;
         }
         
         h2 i {
             font-size: 1.4rem;
-            filter: drop-shadow(0 0 10px #00ccff);
         }
         
         /* Progress Section */
@@ -696,7 +555,7 @@
         
         .progress-label {
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
+            color: #333;
         }
         
         .progress-status {
@@ -704,54 +563,48 @@
             padding: 4px 12px;
             border-radius: 20px;
             font-weight: 600;
-            backdrop-filter: blur(5px);
         }
         
         .status-done {
-            background: rgba(0, 200, 0, 0.2);
-            border: 1px solid rgba(0, 255, 0, 0.3);
-            color: #88ff88;
+            background-color: #e7f6ec;
+            color: #2e7d32;
         }
         
         .status-in-progress {
-            background: rgba(0, 200, 255, 0.2);
-            border: 1px solid rgba(0, 200, 255, 0.3);
-            color: #88ddff;
+            background-color: #e3f2fd;
+            color: #1565c0;
         }
         
         .status-preparing {
-            background: rgba(255, 150, 0, 0.2);
-            border: 1px solid rgba(255, 150, 0, 0.3);
-            color: #ffbb88;
+            background-color: #fff3e0;
+            color: #ef6c00;
         }
         
         .progress-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
             overflow: hidden;
         }
         
         .progress-fill {
             height: 100%;
-            border-radius: 4px;
-            background: linear-gradient(90deg, #00ccff, #aa55ff);
+            border-radius: 5px;
+            background-color: #5D8C3E;
             width: 0%;
-            transition: width 1.5s cubic-bezier(0.2, 0.9, 0.3, 1.1);
-            box-shadow: 0 0 20px #00ccff;
+            transition: width 1.5s ease-in-out;
         }
         
         /* Text Content */
         .content-text {
             line-height: 1.7;
             margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.8);
+            color: #444;
         }
         
         .highlight {
-            color: #00ccff;
+            color: #5D8C3E;
             font-weight: 600;
-            text-shadow: 0 0 10px #00ccff;
         }
         
         /* Lists */
@@ -761,7 +614,7 @@
         }
         
         ul li {
-            color: rgba(255, 255, 255, 0.7);
+            color: #444;
             margin-bottom: 8px;
             line-height: 1.6;
         }
@@ -775,14 +628,13 @@
         }
         
         .competitor-tag {
-            background: rgba(0, 200, 255, 0.1);
-            border: 1px solid rgba(0, 200, 255, 0.3);
+            background-color: #f1f8e9;
+            border: 1px solid #c5e1a5;
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
-            color: #88ddff;
+            color: #5D8C3E;
             font-weight: 500;
-            backdrop-filter: blur(5px);
         }
         
         /* Market Model */
@@ -794,27 +646,24 @@
         }
         
         .model-item {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(5px);
+            background-color: #f9f9f9;
             padding: 18px 15px;
-            border-radius: 15px;
+            border-radius: 8px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid #eee;
             transition: all 0.3s ease;
-            color: rgba(255, 255, 255, 0.8);
+            color: #444;
         }
         
         .model-item:hover {
-            background: rgba(0, 200, 255, 0.1);
-            border-color: rgba(0, 200, 255, 0.3);
-            transform: scale(1.02);
+            background-color: #f1f8e9;
+            border-color: #c5e1a5;
         }
         
         .model-icon {
             font-size: 2rem;
-            color: #00ccff;
+            color: #5D8C3E;
             margin-bottom: 12px;
-            filter: drop-shadow(0 0 15px #00ccff);
         }
         
         /* Status Indicators */
@@ -830,11 +679,9 @@
             align-items: center;
             gap: 10px;
             padding: 12px 20px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(5px);
-            border-radius: 12px;
-            border-left: 4px solid #00ccff;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #5D8C3E;
         }
         
         .status-dot {
@@ -844,35 +691,28 @@
         }
         
         .dot-green {
-            background: #88ff88;
-            box-shadow: 0 0 15px #88ff88;
+            background-color: #4caf50;
             animation: pulse 2s infinite;
         }
         
         .dot-blue {
-            background: #88ddff;
-            box-shadow: 0 0 15px #88ddff;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
+            background-color: #2196f3;
         }
         
         /* Access Guide */
         .access-guide {
             margin: 20px 0;
-            border-radius: 15px;
+            border-radius: 8px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #e0e0e0;
         }
         
         .access-item {
             display: flex;
             align-items: center;
             padding: 15px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid #f0f0f0;
+            background-color: #f9f9f9;
             transition: all 0.2s ease;
         }
         
@@ -881,13 +721,13 @@
         }
         
         .access-item:hover {
-            background: rgba(0, 200, 255, 0.05);
+            background-color: #f1f8e9;
         }
         
         .access-role {
             flex: 0 0 140px;
             font-weight: 600;
-            color: #00ccff;
+            color: #5D8C3E;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -895,79 +735,60 @@
         
         .access-role:before {
             content: "→";
-            color: #00ccff;
+            color: #5D8C3E;
         }
         
         .access-url {
             flex: 1;
             font-family: monospace;
-            background: rgba(0, 0, 0, 0.3);
+            background-color: #fff;
             padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: #333;
             word-break: break-all;
+        }
+        
+        /* Interface Buttons - ĐÃ LOẠI BỎ (không hiển thị) */
+        .interface-buttons {
+            display: none;
         }
         
         /* Info Box */
         .info-box {
-            background: rgba(0, 200, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(0, 200, 255, 0.2);
+            background-color: #e8f5e9;
+            border: 1px solid #a5d6a7;
             padding: 20px;
-            border-radius: 15px;
+            border-radius: 8px;
             margin: 20px 0;
-            color: rgba(255, 255, 255, 0.9);
         }
         
         /* Policy Page Styles */
         .policy-section {
             margin-bottom: 40px;
             padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid #eee;
         }
         
         .policy-section h3 {
-            color: #00ccff;
+            color: #5D8C3E;
             margin-bottom: 15px;
             font-size: 1.3rem;
             display: flex;
             align-items: center;
             gap: 10px;
-            text-shadow: 0 0 15px #00ccff;
         }
         
         .policy-content {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
             line-height: 1.7;
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .policy-content p {
             margin-bottom: 10px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .policy-content h4 {
-            color: #aa55ff;
-            margin: 25px 0 15px;
-            font-size: 1.2rem;
-        }
-        
-        .policy-content h5 {
-            color: #00ccff;
-            margin: 20px 0 10px;
-            font-size: 1.1rem;
-        }
-        
-        .policy-content h6 {
-            color: rgba(255, 255, 255, 0.9);
-            margin: 15px 0 8px;
-            font-size: 1rem;
         }
         
         .policy-content ul {
@@ -975,39 +796,32 @@
             margin-bottom: 15px;
         }
         
-        .policy-content li {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
         /* Footer */
         footer {
             text-align: center;
             padding: 25px 20px;
             margin-top: 40px;
-            color: rgba(255, 255, 255, 0.5);
+            color: #666;
             font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid #eee;
         }
         
         /* Founder Info */
         .founder-info {
-            background: rgba(0, 200, 255, 0.15);
-            backdrop-filter: blur(15px);
+            background: linear-gradient(135deg, #5D8C3E, #4a7032);
             color: white;
-            padding: 15px 25px;
+            padding: 15px 20px;
             border-radius: 50px;
             display: inline-flex;
             align-items: center;
             gap: 15px;
             margin-bottom: 20px;
             font-size: 0.95rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 5px 15px rgba(93, 140, 62, 0.4);
         }
         
         .founder-info i {
-            color: #ffd966;
-            filter: drop-shadow(0 0 15px #ffd966);
+            font-size: 1.2rem;
         }
         
         /* Responsive */
@@ -1025,7 +839,7 @@
             }
             
             .logo {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
             
             .content-grid {
@@ -1043,12 +857,12 @@
             .menu-button {
                 top: 20px;
                 right: 20px;
-                width: 50px;
-                height: 50px;
+                width: 45px;
+                height: 45px;
             }
             
             .menu-dropdown {
-                top: 80px;
+                top: 75px;
                 right: 20px;
             }
             
@@ -1129,7 +943,7 @@
         </div>
     </div>
     
-    <!-- Main Project Container -->
+    <!-- Main Project Container (hidden initially) -->
     <div id="mainContainer" class="main-container">
         <!-- Founder Info Banner -->
         <div style="text-align: center; margin-bottom: 20px;">
@@ -1140,14 +954,14 @@
             </div>
         </div>
         
-        <!-- Menu Button -->
+        <!-- Menu Button (3 gạch) - GIỮ NGUYÊN -->
         <div class="menu-button" id="menuButton">
             <div class="menu-line"></div>
             <div class="menu-line"></div>
             <div class="menu-line"></div>
         </div>
         
-        <!-- Menu Dropdown -->
+        <!-- Menu Dropdown - GIỮ NGUYÊN các mục chính (đã loại bỏ các nút không cần thiết) -->
         <div class="menu-dropdown" id="menuDropdown">
             <button class="menu-item" onclick="showPage('home')">
                 <i class="fas fa-home"></i>
@@ -1165,13 +979,14 @@
                 <i class="fas fa-external-link-alt"></i>
                 <span>Truy cập ứng dụng chính</span>
             </button>
+            <!-- Đã loại bỏ các nút giao diện riêng lẻ (Customer, Shipper, Partner, Admin) nhưng vẫn giữ nút ứng dụng chính -->
             <button class="menu-item logout" onclick="logout()">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Đăng xuất</span>
             </button>
         </div>
         
-        <!-- Home Page -->
+        <!-- Home Page - GIỮ NGUYÊN 100% NỘI DUNG GỐC -->
         <div id="home-page" class="page-content active">
             <header>
                 <div class="logo">
@@ -1180,6 +995,8 @@
                 <h1>Dự Án Crabor</h1>
                 <p class="tagline">Hệ sinh thái giao đồ ăn với linh vật chú cua - Nhanh nhẹn, tin cậy và bền vững</p>
             </header>
+            
+            <!-- Đã loại bỏ phần interface-buttons (các nút truy cập nhanh) nhưng giữ nguyên mọi thứ khác -->
             
             <div class="content-grid">
                 <!-- Tiến độ dự án -->
@@ -1285,7 +1102,7 @@
                 <section class="card">
                     <h2><i class="fas fa-external-link-alt"></i> Truy Cập Ứng Dụng Demo</h2>
                     <div class="content-text">
-                        <div class="info-box" style="background-color: rgba(0, 150, 255, 0.15); border-color: rgba(0, 200, 255, 0.3);">
+                        <div class="info-box" style="background-color: #e3f2fd; border-color: #90caf9;">
                             <p><i class="fas fa-rocket"></i> <strong>Demo đã sẵn sàng:</strong> Ứng dụng Crabor đã được deploy và có thể truy cập trực tiếp!</p>
                         </div>
                         
@@ -1296,7 +1113,7 @@
                             </button>
                         </div>
                         
-                        <h3 style="color: #00ccff; margin-top: 20px;">Hướng Dẫn Truy Cập Các Giao Diện:</h3>
+                        <h3 style="color: #5D8C3E; margin-top: 20px;">Hướng Dẫn Truy Cập Các Giao Diện:</h3>
                         <div class="access-guide">
                             <div class="access-item">
                                 <div class="access-role">Khách Hàng</div>
@@ -1415,7 +1232,7 @@
             </footer>
         </div>
         
-        <!-- Legal Policy Page -->
+        <!-- Legal Policy Page - GIỮ NGUYÊN 100% NỘI DUNG GỐC -->
         <div id="legal-page" class="page-content">
             <button class="back-btn" onclick="showPage('home')">
                 <i class="fas fa-arrow-left"></i> Về Trang Chủ
@@ -1430,6 +1247,7 @@
             </header>
             
             <div class="policy-content">
+                <!-- Chính sách pháp lý sẽ được chèn ở đây -->
                 <div id="legal-content"></div>
             </div>
             
@@ -1439,7 +1257,7 @@
             </footer>
         </div>
         
-        <!-- Tech Progress Page -->
+        <!-- Tech Progress Page - GIỮ NGUYÊN 100% NỘI DUNG GỐC -->
         <div id="tech-page" class="page-content">
             <button class="back-btn" onclick="showPage('home')">
                 <i class="fas fa-arrow-left"></i> Về Trang Chủ
@@ -1477,7 +1295,7 @@
                         </div>
                     </div>
                     
-                    <h3 style="color: #00ccff; margin-top: 25px;">Thành Tựu Đã Đạt Được:</h3>
+                    <h3 style="color: #5D8C3E; margin-top: 25px;">Thành Tựu Đã Đạt Được:</h3>
                     <ul>
                         <li><span class="highlight">✅ Server hoàn chỉnh:</span> Ứng dụng Node.js/Express đã có thể khởi động và chạy</li>
                         <li><span class="highlight">✅ Kết nối database:</span> Hệ thống đã kết nối thành công với cloud database</li>
@@ -1486,7 +1304,7 @@
                         <li><span class="highlight">✅ Modular design:</span> Code được tổ chức theo module, dễ bảo trì và mở rộng</li>
                     </ul>
                     
-                    <h3 style="color: #00ccff; margin-top: 25px;">Giao Diện Ứng Dụng:</h3>
+                    <h3 style="color: #5D8C3E; margin-top: 25px;">Giao Diện Ứng Dụng:</h3>
                     <div class="model-details">
                         <div class="model-item">
                             <div class="model-icon">
@@ -1537,7 +1355,7 @@
         </div>
     </div>
 
-    <!-- Legal Policy Content Template -->
+    <!-- Legal Policy Content (Hidden initially, loaded via JavaScript) - GIỮ NGUYÊN 100% NỘI DUNG GỐC -->
     <script id="legal-policy-content" type="text/template">
         <div class="policy-section">
             <h3><i class="fas fa-file-contract"></i> Tổng Quan Chính Sách Pháp Lý</h3>
@@ -1567,7 +1385,7 @@
                     </div>
                 </div>
                 
-                <h3 style="color: #00ccff; margin-top: 25px;">Các Chính Sách Chính Đã Hoàn Thiện:</h3>
+                <h3 style="color: #5D8C3E; margin-top: 25px;">Các Chính Sách Chính Đã Hoàn Thiện:</h3>
                 <ul>
                     <li><strong>Điều khoản sử dụng chung</strong> - Áp dụng cho tất cả người dùng nền tảng</li>
                     <li><strong>Chính sách bảo mật thông tin</strong> - Tuân thủ quy định pháp luật Việt Nam</li>
@@ -1588,7 +1406,7 @@
             <div class="content-text">
                 <p>Áp dụng cho toàn bộ người dùng, đối tác và shipper khi sử dụng nền tảng Crabor.</p>
                 
-                <h4 style="color: #aa55ff; margin-top: 20px;">PHẦN I. ĐIỀU KHOẢN SỬ DỤNG CHUNG</h4>
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN I. ĐIỀU KHOẢN SỬ DỤNG CHUNG</h4>
                 
                 <h5>1. Giới thiệu</h5>
                 <p>Crabor là nền tảng công nghệ trung gian kết nối Người dùng, Đối tác cung cấp dịch vụ/nhà hàng và Đối tác giao hàng (Shipper). Crabor không trực tiếp bán hàng, không trực tiếp giao hàng và không phải là bên lao động với shipper.</p>
@@ -1605,7 +1423,7 @@
                 <h5>3. Quyền sửa đổi</h5>
                 <p>Crabor có quyền thay đổi, cập nhật điều khoản vào bất kỳ thời điểm nào. Phiên bản mới có hiệu lực ngay khi được công bố trên ứng dụng/website.</p>
                 
-                <h4 style="color: #aa55ff; margin-top: 20px;">PHẦN II. CHÍNH SÁCH DÀNH CHO NGƯỜI DÙNG</h4>
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN II. CHÍNH SÁCH DÀNH CHO NGƯỜI DÙNG</h4>
                 
                 <h5>1. Điều kiện sử dụng</h5>
                 <ul>
@@ -1643,25 +1461,569 @@
                     <li>Marketing và chăm sóc khách hàng</li>
                 </ul>
                 <p>Crabor cam kết bảo mật dữ liệu theo quy định pháp luật hiện hành.</p>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN III. CHÍNH SÁCH DÀNH CHO ĐỐI TÁC (NHÀ HÀNG)</h4>
+                
+                <h5>1. Điều kiện hợp tác</h5>
+                <ul>
+                    <li>Có giấy phép kinh doanh hợp pháp</li>
+                    <li>Đảm bảo an toàn vệ sinh thực phẩm</li>
+                    <li>Chịu trách nhiệm về nguồn gốc và chất lượng sản phẩm</li>
+                </ul>
+                
+                <h5>2. Hoa hồng & thanh toán</h5>
+                <ul>
+                    <li>Crabor thu 20% hoa hồng trên mỗi đơn hàng thành công</li>
+                    <li>Thanh toán cho đối tác được thực hiện theo chu kỳ do Crabor quy định</li>
+                </ul>
+                
+                <h5>3. Nghĩa vụ đối tác</h5>
+                <ul>
+                    <li>Cung cấp món đúng mô tả, đúng giá</li>
+                    <li>Chuẩn bị món đúng thời gian cam kết</li>
+                    <li>Không tự ý hủy đơn hoặc gian lận</li>
+                </ul>
+                
+                <h5>4. Nội dung & thương hiệu</h5>
+                <p>Đối tác đồng ý cho Crabor sử dụng:</p>
+                <ul>
+                    <li>Tên thương hiệu</li>
+                    <li>Logo</li>
+                    <li>Hình ảnh sản phẩm</li>
+                </ul>
+                <p>cho mục đích hiển thị, marketing trên nền tảng.</p>
+                
+                <h5>5. Chấm dứt hợp tác</h5>
+                <p>Crabor có quyền tạm ngưng hoặc chấm dứt hợp tác nếu đối tác:</p>
+                <ul>
+                    <li>Vi phạm pháp luật</li>
+                    <li>Gian lận</li>
+                    <li>Gây ảnh hưởng nghiêm trọng đến uy tín nền tảng</li>
+                </ul>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN IV. CHÍNH SÁCH DÀNH CHO SHIPPER</h4>
+                
+                <h5>1. Tư cách pháp lý</h5>
+                <ul>
+                    <li>Shipper là đối tác độc lập, không phải nhân viên của Crabor</li>
+                    <li>Tự chịu trách nhiệm về thuế, bảo hiểm và rủi ro cá nhân</li>
+                </ul>
+                
+                <h5>2. Phí đăng ký</h5>
+                <ul>
+                    <li>Phí đăng ký ban đầu: 700.000 VNĐ</li>
+                    <li>Bao gồm: kích hoạt tài khoản, đồng phục, xác minh & lưu lưu trữ và xác minh thông tin giấy tờ cần thiết</li>
+                </ul>
+                
+                <h5>3. Thu nhập & khấu trừ</h5>
+                <ul>
+                    <li>Phí giao hàng được tính theo khoảng cách: ~3.000đ/km (giai đoạn đầu)</li>
+                    <li>Crabor khấu trừ 10% phí giao hàng như phí nền tảng</li>
+                </ul>
+                
+                <h5>4. Nghĩa vụ shipper</h5>
+                <ul>
+                    <li>Giao hàng đúng đơn, đúng người nhận</li>
+                    <li>Không gian lận GPS, không nhận tiền ngoài hệ thống</li>
+                    <li>Tuân thủ luật giao thông và quy định ứng dụng</li>
+                </ul>
+                
+                <h5>5. Kỷ luật & xử lý vi phạm</h5>
+                <p>Crabor có quyền:</p>
+                <ul>
+                    <li>Cảnh cáo</li>
+                    <li>Tạm khóa</li>
+                    <li>Khóa vĩnh viễn tài khoản shipper</li>
+                </ul>
+                <p>trong trường hợp vi phạm nghiêm trọng, không cần báo trước.</p>
+                
+                <h5>6. Miễn trừ trách nhiệm</h5>
+                <p>Crabor không chịu trách nhiệm đối với:</p>
+                <ul>
+                    <li>Tai nạn giao thông</li>
+                    <li>Tranh chấp giữa shipper và người dùng</li>
+                    <li>Vi phạm pháp luật cá nhân của shipper</li>
+                </ul>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN V. GIẢI QUYẾT TRANH CHẤP</h4>
+                <ul>
+                    <li>Mọi tranh chấp phát sinh sẽ được ưu tiên giải quyết bằng thương lượng</li>
+                    <li>Trường hợp không đạt được thỏa thuận, tranh chấp sẽ được giải quyết theo pháp luật Việt Nam</li>
+                </ul>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN VI. HIỆU LỰC</h4>
+                <p>Điều khoản này có hiệu lực kể từ ngày được công bố trên nền tảng Crabor.</p>
+                <p>Người dùng, đối tác và shipper có trách nhiệm đọc kỹ trước khi sử dụng dịch vụ.</p>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN VII. CHÍNH SÁCH XỬ LÝ SỰ CỐ & KHIẾU NẠI</h4>
+                
+                <h5>1. Nguyên tắc chung</h5>
+                <ul>
+                    <li>Crabor đóng vai trò nền tảng trung gian và không trực tiếp cung cấp hàng hóa hoặc dịch vụ giao hàng.</li>
+                    <li>Mọi sự cố được xử lý trên nguyên tắc: minh bạch – có bằng chứng – theo mức độ lỗi.</li>
+                    <li>Crabor có quyền đưa ra quyết định cuối cùng dựa trên dữ liệu hệ thống.</li>
+                </ul>
+                
+                <h5>2. Các loại sự cố phổ biến</h5>
+                
+                <h6>2.1. Đối với người dùng</h6>
+                <ul>
+                    <li>Giao thiếu/sai món</li>
+                    <li>Món kém chất lượng, đổ vỡ</li>
+                    <li>Giao hàng trễ</li>
+                    <li>Shipper có hành vi không phù hợp</li>
+                </ul>
+                
+                <h6>2.2. Đối với đối tác</h6>
+                <ul>
+                    <li>Shipper không đến lấy hàng</li>
+                    <li>Đơn bị hủy không hợp lệ</li>
+                    <li>Gian lận khuyến mãi từ người dùng</li>
+                </ul>
+                
+                <h6>2.3. Đối với shipper</h6>
+                <ul>
+                    <li>Khách không nhận hàng</li>
+                    <li>Địa chỉ sai</li>
+                    <li>Đối tác chuẩn bị món chậm</li>
+                </ul>
+                
+                <h5>3. Quy trình khiếu nại</h5>
+                <ul>
+                    <li>Khiếu nại phải được gửi trong vòng 24 giờ kể từ thời điểm hoàn tất/hủy đơn</li>
+                    <li>Cung cấp đầy đủ bằng chứng: hình ảnh, chat, lịch sử đơn</li>
+                    <li>Crabor có thời gian xử lý từ 3–7 ngày làm việc</li>
+                </ul>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN VIII. CHÍNH SÁCH HOÀN TIỀN</h4>
+                
+                <h5>1. Trường hợp được hoàn tiền</h5>
+                <ul>
+                    <li>Đơn bị hủy do lỗi hệ thống</li>
+                    <li>Đối tác xác nhận không thể cung cấp dịch vụ</li>
+                    <li>Shipper không thể hoàn thành đơn và không có shipper thay thế</li>
+                </ul>
+                
+                <h5>2. Trường hợp không hoàn tiền</h5>
+                <ul>
+                    <li>Người dùng hủy đơn sau khi đối tác đã chuẩn bị món</li>
+                    <li>Shipper đã nhận đơn và đang giao</li>
+                    <li>Lý do cá nhân từ phía người dùng</li>
+                </ul>
+                
+                <h5>3. Hình thức hoàn tiền</h5>
+                <ul>
+                    <li>Hoàn về phương thức thanh toán ban đầu hoặc ví Crabor (nếu có)</li>
+                    <li>Thời gian xử lý: 5–10 ngày làm việc</li>
+                </ul>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN IX. CHÍNH SÁCH PHẠT & KHÓA TÀI KHOẢN</h4>
+                
+                <h5>1. Đối với người dùng</h5>
+                <ul>
+                    <li>Hủy đơn nhiều lần không lý do chính đáng</li>
+                    <li>Gian lận mã khuyến mãi</li>
+                    <li>Có hành vi xúc phạm, đe dọa</li>
+                </ul>
+                <p>Hình thức xử lý: cảnh cáo, hạn chế chức năng, khóa tài khoản vĩnh viễn</p>
+                
+                <h5>2. Đối với đối tác</h5>
+                <ul>
+                    <li>Chuẩn bị món sai/sai giá nhiều lần</li>
+                    <li>Tự ý hủy đơn</li>
+                    <li>Vi phạm VSATTP</li>
+                </ul>
+                <p>Hình thức xử lý: phạt tài chính, giảm hiển thị, tạm ngưng hoặc chấm dứt hợp tác</p>
+                
+                <h5>3. Đối với shipper</h5>
+                <ul>
+                    <li>Gian lận GPS</li>
+                    <li>Nhận đơn nhưng không giao</li>
+                    <li>Thu tiền ngoài hệ thống</li>
+                    <li>Vi phạm pháp luật nghiêm trọng</li>
+                </ul>
+                <p>Hình thức xử lý:</p>
+                <ul>
+                    <li>Trừ thu nhập</li>
+                    <li>Tạm khóa</li>
+                    <li>Khóa vĩnh viễn (không hoàn phí đăng ký)</li>
+                </ul>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN X. FAQ PHÁP LÝ (CÂU HỎI THƯỜNG GẶP)</h4>
+                
+                <h5>1. Crabor có chịu trách nhiệm về chất lượng đồ ăn không?</h5>
+                <p>Không. Trách nhiệm thuộc về đối tác cung cấp.</p>
+                
+                <h5>2. Shipper có phải nhân viên Crabor không?</h5>
+                <p>Không. Shipper là đối tác độc lập.</p>
+                
+                <h5>3. Phí đăng ký shipper có được hoàn lại không?</h5>
+                <p>Phí đăng ký không hoàn lại trừ khi có chính sách đặc biệt được công bố riêng.</p>
+                
+                <h5>4. Crabor có quyền khóa tài khoản không cần báo trước không?</h5>
+                <p>Có, trong trường hợp vi phạm nghiêm trọng hoặc ảnh hưởng đến hệ thống.</p>
+                
+                <h5>5. Dữ liệu cá nhân của tôi có được bảo mật không?</h5>
+                <p>Crabor cam kết bảo mật theo quy định pháp luật Việt Nam.</p>
+                
+                <h5>6. Khi có tranh chấp thì giải quyết thế nào?</h5>
+                <p>Ưu tiên thương lượng, nếu không thành sẽ giải quyết theo pháp luật Việt Nam.</p>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">BỔ SUNG QUY ĐỊNH VỀ PHÍ KÍCH HOẠT TÀI KHOẢN SHIPPER (700.000 VNĐ)</h4>
+                
+                <h5>1. Bản chất của phí 700.000 VNĐ</h5>
+                <ul>
+                    <li>Phí 700.000 VNĐ là chi phí cố định để kích hoạt và duy trì trạng thái hoạt động của tài khoản Shipper trên nền tảng Crabor.</li>
+                    <li>Khoản phí này không phải tiền lương, tiền đặt cọc lao động, hay bảo đảm thực hiện nghĩa vụ lao động.</li>
+                    <li>Phí bao gồm (nhưng không giới hạn):
+                        <ul>
+                            <li>Kích hoạt và duy trì tài khoản Shipper trên hệ thống</li>
+                            <li>Cấp quyền truy cập ứng dụng và hệ sinh thái Crabor</li>
+                            <li>Cấp phát/thu xếp đồng phục, nhận diện thương hiệu (nếu có)</li>
+                            <li>Chi phí quản lý hồ sơ, xác minh thông tin và hỗ trợ vận hành ban đầu</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h5>2. Nguyên tắc duy trì tài khoản hoạt động</h5>
+                <ul>
+                    <li>Tài khoản Shipper được coi là hợp lệ và đang hoạt động khi:
+                        <ul>
+                            <li>Đã hoàn tất thanh toán đủ phí kích hoạt 700.000 VNĐ</li>
+                            <li>Không vi phạm nghiêm trọng các Điều khoản Shipper của Crabor</li>
+                        </ul>
+                    </li>
+                    <li>Trường hợp số dư phí kích hoạt hợp lệ của Shipper thấp hơn 700.000 VNĐ do bất kỳ lý do nào, tài khoản sẽ bị tạm khóa tự động.</li>
+                </ul>
+                
+                <h5>3. Các trường hợp bị trừ hoặc mất hiệu lực phí kích hoạt</h5>
+                <p>Phí kích hoạt 700.000 VNĐ có thể bị mất hiệu lực toàn bộ hoặc một phần trong các trường hợp sau:</p>
+                <ul>
+                    <li>Shipper đơn phương chấm dứt hợp tác hoặc hủy hợp đồng trong thời gian quá sớm kể từ ngày kích hoạt</li>
+                    <li>Shipper yêu cầu ngừng hoạt động tài khoản khi chưa hoàn thành nghĩa vụ phát sinh (đơn hàng, bồi hoàn, phạt)</li>
+                    <li>Shipper vi phạm nghiêm trọng các quy định, bao gồm nhưng không giới hạn:
+                        <ul>
+                            <li>Gian lận đơn hàng, gian lận phí</li>
+                            <li>Tự ý hủy đơn nhiều lần không lý do chính đáng</li>
+                            <li>Hành vi gây ảnh hưởng xấu đến uy tín nền tảng Crabor</li>
+                        </ul>
+                    </li>
+                    <li>Các trường hợp bất khả kháng khác theo đánh giá hợp lý của Crabor nhằm bảo vệ hệ thống và các bên liên quan</li>
+                </ul>
+                
+                <h5>4. Khóa tài khoản do không duy trì đủ phí kích hoạt</h5>
+                <ul>
+                    <li>Khi tài khoản bị khóa do không đủ điều kiện phí kích hoạt:
+                        <ul>
+                            <li>Shipper không thể nhận đơn, truy cập chức năng vận hành trên ứng dụng</li>
+                            <li>Mọi quyền lợi phát sinh tạm thời bị đình chỉ</li>
+                        </ul>
+                    </li>
+                    <li>Việc mở lại tài khoản (nếu được chấp thuận) yêu cầu Shipper:
+                        <ul>
+                            <li>Bổ sung đủ phí kích hoạt theo mức hiện hành</li>
+                            <li>Hoàn tất các nghĩa vụ tồn đọng (nếu có)</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h5>5. Không hoàn lại phí trong đa số trường hợp</h5>
+                <ul>
+                    <li>Phí kích hoạt 700.000 VNĐ không được hoàn lại trong các trường hợp:
+                        <ul>
+                            <li>Shipper tự ý ngừng hoạt động</li>
+                            <li>Shipper vi phạm điều khoản dẫn đến khóa tài khoản</li>
+                            <li>Hủy hợp tác trước thời hạn cam kết (nếu có)</li>
+                        </ul>
+                    </li>
+                    <li>Trường hợp hoàn phí (nếu có) chỉ được xem xét khi:
+                        <ul>
+                            <li>Lỗi hoàn toàn phát sinh từ hệ thống Crabor</li>
+                            <li>Có quyết định đặc biệt bằng văn bản từ Crabor</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <h5>6. Cam kết pháp lý</h5>
+                <ul>
+                    <li>Shipper xác nhận đã đọc, hiểu rõ và đồng ý rằng phí 700.000 VNĐ là điều kiện cần để tài khoản được kích hoạt và duy trì hoạt động.</li>
+                    <li>Việc tiếp tục sử dụng ứng dụng đồng nghĩa với việc Shipper chấp thuận toàn bộ quy định nêu trên.</li>
+                </ul>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN XI. CAM KẾT RIÊNG DÀNH CHO SHIPPER (BẮT BUỘC KHI KÍCH HOẠT)</h4>
+                
+                <h5>1. Tư cách pháp lý</h5>
+                <p>Shipper xác nhận là đối tác độc lập, không phải người lao động, không phát sinh quan hệ lao động với Crabor dưới bất kỳ hình thức nào.</p>
+                
+                <h5>2. Cam kết về phí kích hoạt 700.000 VNĐ</h5>
+                <ul>
+                    <li>Shipper hiểu và đồng ý rằng 700.000 VNĐ là phí kích hoạt và duy trì tài khoản, không phải tiền đặt cọc.</li>
+                    <li>Phí này là điều kiện bắt buộc để tài khoản được hoạt động.</li>
+                    <li>Phí không được hoàn lại trong trường hợp Shipper ngừng hợp tác sớm hoặc vi phạm điều khoản.</li>
+                </ul>
+                
+                <h5>3. Cam kết vận hành</h5>
+                <ul>
+                    <li>Không gian lận GPS, đơn hàng, phí</li>
+                    <li>Không thu tiền ngoài hệ thống</li>
+                    <li>Không có hành vi ảnh hưởng xấu đến uy tín Crabor</li>
+                </ul>
+                
+                <h5>4. Chấp thuận xử lý vi phạm</h5>
+                <ul>
+                    <li>Shipper chấp thuận các biện pháp: trừ thu nhập, khóa tài khoản tạm thời hoặc vĩnh viễn.</li>
+                    <li>Trường hợp khóa vĩnh viễn, Crabor không có nghĩa vụ hoàn phí kích hoạt.</li>
+                </ul>
+                
+                <h5>5. Hiệu lực cam kết</h5>
+                <p>Cam kết có hiệu lực kể từ thời điểm Shipper bấm "Đồng ý" trên ứng dụng hoặc ký xác nhận điện tử.</p>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN XII. CHUẨN HÓA PHÁP LÝ THEO QUY ĐỊNH TMĐT VIỆT NAM</h4>
+                
+                <h5>1. Vai trò của Crabor</h5>
+                <ul>
+                    <li>Crabor là sàn giao dịch thương mại điện tử theo Nghị định 52/2013/NĐ-CP (và văn bản sửa đổi).</li>
+                    <li>Crabor không trực tiếp bán hàng, không trực tiếp tuyển dụng Shipper.</li>
+                </ul>
+                
+                <h5>2. Nghĩa vụ công khai thông tin</h5>
+                <p>Crabor công khai đầy đủ:</p>
+                <ul>
+                    <li>Thông tin pháp nhân vận hành</li>
+                    <li>Điều khoản sử dụng</li>
+                    <li>Chính sách thanh toán, hoàn tiền, khiếu nại</li>
+                </ul>
+                
+                <h5>3. Bảo vệ người tiêu dùng</h5>
+                <ul>
+                    <li>Có cơ chế tiếp nhận và xử lý phản ánh</li>
+                    <li>Lưu trữ lịch sử giao dịch tối thiểu theo quy định pháp luật</li>
+                </ul>
+                
+                <h5>4. Đăng ký Bộ Công Thương</h5>
+                <ul>
+                    <li>Crabor thực hiện thủ tục đăng ký sàn TMĐT tại Cổng thông tin Bộ Công Thương.</li>
+                    <li>Các chính sách trong bộ này là căn cứ pháp lý khi nộp hồ sơ.</li>
+                </ul>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN XIII. KỊCH BẢN TRANH CHẤP & CƠ CHẾ TỰ BẢO VỆ CỦA CRABOR</h4>
+                
+                <h5>Tình huống 1: Shipper khiếu nại đòi lại phí 700.000 VNĐ</h5>
+                <p>Hướng xử lý pháp lý:</p>
+                <ul>
+                    <li>Căn cứ Điều khoản Shipper & Cam kết riêng</li>
+                    <li>Xác định phí là phí dịch vụ, không phải đặt cọc</li>
+                    <li>Không hoàn phí</li>
+                </ul>
+                
+                <h5>Tình huống 2: Người dùng khiếu nại đồ ăn kém chất lượng</h5>
+                <p>Hướng xử lý:</p>
+                <ul>
+                    <li>Chuyển trách nhiệm cho đối tác cung cấp</li>
+                    <li>Crabor hỗ trợ trung gian, không chịu trách nhiệm trực tiếp</li>
+                </ul>
+                
+                <h5>Tình huống 3: Đối tác bị phạt phản đối</h5>
+                <p>Hướng xử lý:</p>
+                <ul>
+                    <li>Căn cứ lịch sử đơn, vi phạm</li>
+                    <li>Áp dụng chế tài đã công bố trước</li>
+                </ul>
+                
+                <h5>Tình huống 4: Cơ quan quản lý kiểm tra</h5>
+                <p>Hướng xử lý:</p>
+                <ul>
+                    <li>Cung cấp hồ sơ đăng ký TMĐT</li>
+                    <li>Điều khoản, chính sách đã công khai</li>
+                    <li>Chứng minh vai trò trung gian nền tảng</li>
+                </ul>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN XIV. CHÍNH SÁCH PHÁP LÝ DÀNH CHO NGƯỜI DÙNG (CUSTOMER)</h4>
+                
+                <h5>1. Tư cách pháp lý của Người dùng</h5>
+                <ul>
+                    <li>Người dùng là cá nhân sử dụng ứng dụng Crabor để đặt dịch vụ từ các đối tác trên nền tảng.</li>
+                    <li>Crabor không phải là bên bán hàng hóa, không chịu trách nhiệm trực tiếp về chất lượng sản phẩm.</li>
+                </ul>
+                
+                <h5>2. Quyền và nghĩa vụ của Người dùng</h5>
+                
+                <h6>Quyền của Người dùng</h6>
+                <ul>
+                    <li>Được cung cấp thông tin minh bạch về giá, phí, đối tác</li>
+                    <li>Được khiếu nại, yêu cầu hỗ trợ theo chính sách công bố</li>
+                </ul>
+                
+                <h6>Nghĩa vụ của Người dùng</h6>
+                <ul>
+                    <li>Cung cấp thông tin chính xác</li>
+                    <li>Thanh toán đầy đủ</li>
+                    <li>Không gian lận, không lạm dụng khuyến mãi</li>
+                </ul>
+                
+                <h5>3. Hủy đơn & trách nhiệm thanh toán</h5>
+                <ul>
+                    <li>Người dùng hủy đơn sau khi đối tác đã chuẩn bị món có thể không được hoàn tiền</li>
+                    <li>Crabor có quyền hạn chế hoặc khóa tài khoản nếu hủy đơn nhiều lần</li>
+                </ul>
+                
+                <h5>4. Xử lý vi phạm</h5>
+                <ul>
+                    <li>Cảnh cáo</li>
+                    <li>Hạn chế tính năng</li>
+                    <li>Khóa tài khoản vĩnh viễn trong trường hợp vi phạm nghiêm trọng</li>
+                </ul>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN XV. CHÍNH SÁCH PHÁP LÝ DÀNH CHO ĐỐI TÁC (NHÀ HÀNG / CỬA HÀNG)</h4>
+                
+                <h5>1. Tư cách đối tác</h5>
+                <ul>
+                    <li>Đối tác là pháp nhân/hộ kinh doanh độc lập</li>
+                    <li>Tự chịu trách nhiệm về VSATTP, giá cả, hóa đơn</li>
+                </ul>
+                
+                <h5>2. Phí & nghĩa vụ tài chính</h5>
+                <ul>
+                    <li>Hoa hồng nền tảng: 20%/đơn hàng (theo mô hình hiện tại)</li>
+                    <li>Đối tác chịu trách nhiệm thuế theo quy định pháp luật</li>
+                </ul>
+                
+                <h5>3. Nghĩa vụ vận hành</h5>
+                <ul>
+                    <li>Chuẩn bị món đúng mô tả, đúng thời gian</li>
+                    <li>Không tự ý hủy đơn</li>
+                    <li>Không thao túng giá</li>
+                </ul>
+                
+                <h5>4. Xử lý vi phạm</h5>
+                <ul>
+                    <li>Phạt tài chính</li>
+                    <li>Giảm hiển thị</li>
+                    <li>Tạm ngưng hoặc chấm dứt hợp tác</li>
+                </ul>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN XVI. FAQ RIÊNG DÀNH CHO NGƯỜI DÙNG (CUSTOMER)</h4>
+                
+                <h5>1. Crabor có phải là bên bán đồ ăn không?</h5>
+                <p>Không. Crabor là nền tảng trung gian kết nối Người dùng với Đối tác.</p>
+                
+                <h5>2. Vì sao tôi không được hoàn tiền khi hủy đơn?</h5>
+                <p>Nếu đơn đã được Đối tác chuẩn bị hoặc Shipper đã nhận giao, hệ thống có thể từ chối hoàn tiền.</p>
+                
+                <h5>3. Tôi có thể khiếu nại bằng cách nào?</h5>
+                <p>Bạn có thể gửi khiếu nại trực tiếp trong ứng dụng trong vòng 24 giờ sau khi đơn hoàn tất/hủy.</p>
+                
+                <h5>4. Vì sao tài khoản của tôi bị khóa?</h5>
+                <p>Do vi phạm điều khoản: hủy đơn nhiều lần, gian lận khuyến mãi, hành vi không phù hợp.</p>
+                
+                <h5>5. Dữ liệu cá nhân của tôi có an toàn không?</h5>
+                <p>Crabor lưu trữ và xử lý dữ liệu theo đúng quy định pháp luật Việt Nam.</p>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN XVII. FAQ RIÊNG DÀNH CHO ĐỐI TÁC (NHÀ HÀNG / CỬA HÀNG)</h4>
+                
+                <h5>1. Crabor thu bao nhiêu % hoa hồng?</h5>
+                <p>Hiện tại là 20%/đơn hàng, có thể điều chỉnh theo thỏa thuận.</p>
+                
+                <h5>2. Tôi có thể tự ý hủy đơn không?</h5>
+                <p>Không. Việc hủy đơn không hợp lệ có thể bị phạt hoặc giảm hiển thị.</p>
+                
+                <h5>3. Tranh chấp chất lượng món xử lý thế nào?</h5>
+                <p>Đối tác chịu trách nhiệm chính. Crabor hỗ trợ trung gian giải quyết.</p>
+                
+                <h5>4. Khi nào tôi bị ngừng hợp tác?</h5>
+                <p>Khi vi phạm nghiêm trọng VSATTP, gian lận giá, hoặc tái phạm nhiều lần.</p>
+                
+                <h4 style="color: #5D8C3E; margin-top: 20px;">PHẦN XVIII: CHÍNH SÁCH THANH TOÁN, THU PHÍ & ĐỐI SOÁT ĐA PHƯƠNG THỨC (Bản Cập Nhật)</h4>
+                
+                <h5>Điều 1. Phạm vi áp dụng và Nguyên tắc</h5>
+                <ol>
+                    <li>Chính sách này quy định chi tiết quy trình xử lý, thu phí, đối soát và quản lý công nợ đối với mọi phương thức thanh toán trên nền tảng Crabor.</li>
+                    <li>Mọi khoản phí dịch vụ (phí hoa hồng, phí giao hàng, phí quảng cáo) phát sinh giữa Đối tác/Shipper và Crabor được coi là một khoản "Nợ phải trả" trong hệ thống.</li>
+                    <li>Crabor được quyền thiết lập các cơ chế, bao gồm việc tạm giữ/gạch nợ từ các khoản thanh toán sắp tới, để đảm bảo việc thu đủ, đúng hạn các khoản nợ phải trả này.</li>
+                </ol>
+                
+                <h5>Mô hình xử lý COD và Chuyển khoản</h5>
+                <p>Để bạn dễ hình dung và triển khai hệ thống, dưới đây là các mô hình quản lý tương ứng với từng phương thức thanh toán, cũng như các quy định pháp lý liên quan cần tuân thủ.</p>
+                
+                <h6>1. Mô hình xử lý Chuyển khoản</h6>
+                <ul>
+                    <li><strong>Cách hoạt động:</strong> Khách hàng chuyển tiền trực tiếp vào tài khoản của Đối tác.</li>
+                    <li><strong>Quy định liên quan:</strong> Phải có chứng từ chuyển khoản hợp lệ để đối tác được khấu trừ thuế GTGT cho các hóa đơn từ 05 triệu đồng trở lên.</li>
+                    <li><strong>Cơ chế quản lý nợ của Crabor:</strong> "Ghi nợ và Khấu trừ tự động". Sàn ghi nhận nợ phí, khấu trừ trực tiếp vào tiền ký quỹ hoặc các khoản sàn sắp chi trả cho đối tác.</li>
+                </ul>
+                
+                <h6>2. Mô hình xử lý Tiền mặt (COD)</h6>
+                <ul>
+                    <li><strong>Cách hoạt động:</strong> Shipper thu tiền mặt từ khách và báo cáo về sàn.</li>
+                    <li><strong>Quy định liên quan:</strong> Hoạt động thu tiền mặt thay mặt Crabor và Đối tác phải được thực hiện theo đúng quy định về dịch vụ thu hộ, chi hộ.</li>
+                    <li><strong>Cơ chế quản lý nợ của Crabor:</strong> "Hạch toán và Trừ nợ ngay lập tức". Ngay khi Shipper xác nhận "Đã thu tiền", hệ thống tự động hạch toán doanh thu, tính phí và ghi nợ. Phần tiền còn lại sẽ được chuyển cho Đối tác sau khi đã trừ các khoản nợ phí tồn đọng.</li>
+                </ul>
+                
+                <h5>Điều 3. Hệ thống "Ghi nợ hoa hồng" và Quy trình Nhắc nợ Tự động</h5>
+                <ol>
+                    <li><strong>Hình thành Khoản nợ:</strong>
+                        <ul>
+                            <li>Mọi khoản phí (hoa hồng, dịch vụ, quảng cáo, phạt) phát sinh từ giao dịch sẽ được hệ thống ghi nhận ngay lập tức vào tài khoản công nợ riêng của từng Đối tác/Shipper.</li>
+                            <li>Số dư nợ được cập nhật theo thời gian thực và hiển thị công khai trên trang quản trị.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Quy trình Nhắc nợ Tự động:</strong>
+                        <ul>
+                            <li><strong>Thông báo sớm (Trước hạn 3 ngày):</strong> Hệ thống gửi thông báo trong app và email/SMS để nhắc nhở.</li>
+                            <li><strong>Thông báo đến hạn (Ngày hết hạn):</strong> Gửi thông báo chính thức yêu cầu thanh toán.</li>
+                            <li><strong>Nhắc nợ quá hạn:</strong> Tự động gửi tin nhắn nhắc nợ hàng ngày/tuần qua các kênh (SMS, Zalo, Notification) với nội dung được cá nhân hóa, bao gồm số tiền, mã đơn và ngày quá hạn.</li>
+                            <li><strong>Xác nhận nợ:</strong> Đối tác/Shipper có thể gửi yêu cầu xác nhận nợ chi tiết qua hệ thống, giúp hai bên minh bạch thông tin và giảm tranh chấp.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Thanh toán & Đối soát:</strong>
+                        <ul>
+                            <li>Đối tác/Shipper có thể chủ động thanh toán khoản nợ bất kỳ lúc nào qua ví Crabor hoặc chuyển khoản.</li>
+                            <li>Trong mỗi kỳ đối soát (ví dụ: hàng tuần), hệ thống sẽ tự động khấu trừ toàn bộ số dư nợ trước khi chuyển khoản số tiền còn lại (nếu có).</li>
+                            <li>Mọi giao dịch thanh toán nợ đều được ghi nhận, lưu trữ chứng từ điện tử đầy đủ, tạo thành căn cứ pháp lý và kế toán rõ ràng.</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <h5>Điều 4. Chế tài và Xử lý nợ quá hạn</h5>
+                <ol>
+                    <li><strong>Phạt trễ hạn:</strong> Áp dụng phí phạt cố định hoặc tính theo tỷ lệ %/ngày trên số nợ gốc quá hạn. Mức phạt phải được công bố rõ ràng từ đầu.</li>
+                    <li><strong>Hạn chế quyền sử dụng dịch vụ:</strong>
+                        <ul>
+                            <li><strong>Cảnh báo:</strong> Tạm khóa tính năng tạo mới chương trình quảng cáo, đăng ký nhận hỗ trợ từ sàn.</li>
+                            <li><strong>Nghiêm trọng:</strong> Tạm dừng hiển thị gian hàng, không được nhận đơn hàng mới (với Shipper) cho đến khi nợ được thanh toán.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Xử lý cuối cùng:</strong> Trong trường hợp nợ quá hạn nghiêm trọng, kéo dài và không có thiện chí giải quyết, Crabor bảo lưu quyền khởi kiện dân sự để đòi nợ và chấm dứt hợp đồng/vô hiệu hóa tài khoản vĩnh viễn.</li>
+                </ol>
+                
+                <div class="info-box">
+                    <p><i class="fas fa-info-circle"></i> <strong>Lưu ý quan trọng:</strong> Đây là bản chính sách pháp lý cập nhật cho dự án Crabor, được sửa đổi và bổ sung toàn diện. Bản này đã tích hợp đầy đủ các điều khoản về quy trình xử lý thanh toán COD & Chuyển khoản, hệ thống "Ghi nợ hoa hồng" và nhắc nợ tự động mới được đề xuất. Tài liệu này đã được tham chiếu với các quy định pháp lý mới nhất hiện hành (từ 01/07/2024 và 01/07/2025) về dịch vụ thu hộ, chi hộ và thanh toán không dùng tiền mặt.</p>
+                </div>
             </div>
         </div>
     </script>
 
     <script>
-        // Hardcoded credentials
+        // ==================== AUTHENTICATION ====================
+        // Hardcoded credentials (single user - founder only)
         const VALID_USERNAME = 'founder';
         const VALID_PASSWORD = '01222397657a';
         
         // Check if already authenticated
         document.addEventListener('DOMContentLoaded', function() {
+            // Check session storage for auth
             const isAuthenticated = sessionStorage.getItem('crabor_auth') === 'true';
             
             if (isAuthenticated) {
+                // User already authenticated, show main content
                 document.getElementById('authContainer').classList.add('hidden');
                 document.getElementById('mainContainer').classList.add('active');
                 document.body.classList.add('authenticated');
+                
+                // Initialize the main app
                 initializeMainApp();
             } else {
+                // Show auth container
                 document.getElementById('authContainer').classList.remove('hidden');
                 document.getElementById('mainContainer').classList.remove('active');
                 document.body.classList.remove('authenticated');
@@ -1692,67 +2054,102 @@
             
             if (usernameInput) {
                 usernameInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') handleLogin();
+                    if (e.key === 'Enter') {
+                        handleLogin();
+                    }
                 });
             }
             
             if (passwordInputField) {
                 passwordInputField.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') handleLogin();
+                    if (e.key === 'Enter') {
+                        handleLogin();
+                    }
                 });
             }
         });
         
+        // Handle login
         function handleLogin() {
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
             const errorMessage = document.getElementById('errorMessage');
             const errorText = document.getElementById('errorText');
             
+            // Hide previous error
             errorMessage.style.display = 'none';
             
+            // Validate
             if (!username || !password) {
                 showError('Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu');
                 return;
             }
             
+            // Check credentials
             if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+                // Success - store in session storage (cleared when browser closed)
                 sessionStorage.setItem('crabor_auth', 'true');
+                
+                // Show main content
                 document.getElementById('authContainer').classList.add('hidden');
                 document.getElementById('mainContainer').classList.add('active');
                 document.body.classList.add('authenticated');
+                
+                // Initialize the main app
                 initializeMainApp();
+                
+                // Log success
+                console.log('%c✅ Xác thực thành công - Chào mừng Founder!', 'color: #28a745; font-size: 14px; font-weight: bold;');
             } else {
+                // Failed
                 showError('Tên đăng nhập hoặc mật khẩu không chính xác');
+                
+                // Log failed attempt
+                console.log('%c❌ Xác thực thất bại - Truy cập trái phép!', 'color: #dc3545; font-size: 14px; font-weight: bold;');
             }
         }
         
+        // Show error message
         function showError(message) {
             const errorMessage = document.getElementById('errorMessage');
             const errorText = document.getElementById('errorText');
             
             errorText.textContent = message;
             errorMessage.style.display = 'flex';
+            
+            // Shake animation
             errorMessage.style.animation = 'none';
-            errorMessage.offsetHeight;
+            errorMessage.offsetHeight; // Trigger reflow
             errorMessage.style.animation = 'shake 0.5s ease';
         }
         
+        // Logout function
         window.logout = function() {
+            // Clear session
             sessionStorage.removeItem('crabor_auth');
+            
+            // Hide main content
             document.getElementById('mainContainer').classList.remove('active');
             document.getElementById('authContainer').classList.remove('hidden');
             document.body.classList.remove('authenticated');
+            
+            // Clear input fields
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
+            
+            // Hide any error message
             document.getElementById('errorMessage').style.display = 'none';
             
+            // Close menu if open
             const menuDropdown = document.getElementById('menuDropdown');
             if (menuDropdown) {
                 menuDropdown.classList.remove('active');
             }
+            
+            console.log('👋 Đã đăng xuất khỏi hệ thống');
         };
         
+        // ==================== MAIN APP FUNCTIONS ====================
         function initializeMainApp() {
             // Progress bars
             const progressItems = [
@@ -1832,6 +2229,7 @@
             }
         }
         
+        // Page navigation
         window.showPage = function(page) {
             document.querySelectorAll('.page-content').forEach(p => {
                 p.classList.remove('active');
@@ -1846,15 +2244,18 @@
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
+            // Load legal content if needed
             if (page === 'legal') {
                 loadLegalContent();
             }
         };
         
+        // Open demo app
         window.openDemoApp = function() {
             window.open('https://crabor-com.onrender.com/', '_blank');
         };
         
+        // Load legal content
         function loadLegalContent() {
             const legalContentEl = document.getElementById('legal-content');
             if (legalContentEl && !legalContentEl.hasChildNodes()) {
@@ -1862,6 +2263,7 @@
                 if (legalTemplate) {
                     legalContentEl.innerHTML = legalTemplate.innerHTML;
                     
+                    // Animate the loaded content
                     setTimeout(() => {
                         document.querySelectorAll('.policy-section').forEach((section, index) => {
                             section.style.opacity = '0';
@@ -1878,18 +2280,50 @@
             }
         }
         
-        // Security features
+        // Security features for main app
         document.addEventListener('contextmenu', function(e) {
             if (document.body.classList.contains('authenticated')) {
                 e.preventDefault();
+                alert('⚠️ Chức năng này đã bị vô hiệu hóa để bảo vệ tài liệu nội bộ.');
+                return false;
+            }
+        });
+        
+        document.addEventListener('copy', function(e) {
+            if (document.body.classList.contains('authenticated')) {
+                e.preventDefault();
+                alert('⚠️ Không thể sao chép nội dung từ tài liệu nội bộ.');
+                return false;
+            }
+        });
+        
+        document.addEventListener('cut', function(e) {
+            if (document.body.classList.contains('authenticated')) {
+                e.preventDefault();
+                alert('⚠️ Không thể cắt nội dung từ tài liệu nội bộ.');
+                return false;
+            }
+        });
+        
+        document.addEventListener('paste', function(e) {
+            if (document.body.classList.contains('authenticated')) {
+                e.preventDefault();
+                alert('⚠️ Không thể dán nội dung vào tài liệu nội bộ.');
                 return false;
             }
         });
         
         document.addEventListener('keydown', function(e) {
             if (document.body.classList.contains('authenticated')) {
-                if (e.ctrlKey && (e.key === 'p' || e.key === 'P' || e.key === 's' || e.key === 'S')) {
+                if (e.ctrlKey && (e.key === 'p' || e.key === 'P')) {
                     e.preventDefault();
+                    alert('⚠️ Chức năng in đã bị vô hiệu hóa cho tài liệu này.');
+                    return false;
+                }
+                
+                if (e.ctrlKey && (e.key === 's' || e.key === 'S')) {
+                    e.preventDefault();
+                    alert('⚠️ Không thể lưu tài liệu nội bộ.');
                     return false;
                 }
             }
@@ -1899,9 +2333,10 @@
         console.log(
             '%c🔒 HỆ THỐNG XÁC THỰC NỘI BỘ CRABOR 🔒\n\n' +
             'Chỉ Founder - Kiều Thanh Hải mới có quyền truy cập.\n' +
+            'Mọi hành vi đăng nhập trái phép đều bị ghi nhận.\n\n' +
             '👤 Tài khoản: founder\n' +
             '🔑 Mật khẩu: [********]',
-            'color: #00ccff; font-size: 14px; font-weight: bold; font-family: monospace; text-shadow: 0 0 10px #00ccff;'
+            'color: #5D8C3E; font-size: 14px; font-weight: bold; font-family: monospace;'
         );
     </script>
 </body>
