@@ -64,6 +64,28 @@
             100% { transform: translate(50px, 50px); }
         }
         
+        /* Warning Container */
+        .warning-container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            padding: 50px 40px;
+            position: relative;
+            z-index: 10;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: containerAppear 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            text-align: center;
+        }
+        
+        .warning-container.hidden {
+            display: none;
+        }
+        
         /* Auth Container */
         .auth-container {
             max-width: 450px;
@@ -118,6 +140,156 @@
                 opacity: 1;
                 transform: scale(1) translateY(0);
             }
+        }
+        
+        /* Warning Icon */
+        .warning-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ff6b6b, #ff4757);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 
+                0 20px 30px -10px rgba(255, 71, 87, 0.5),
+                0 0 0 5px rgba(255,255,255,0.2);
+            animation: pulseWarning 2s ease-in-out infinite;
+        }
+        
+        .warning-icon i {
+            font-size: 4rem;
+            color: white;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+        }
+        
+        @keyframes pulseWarning {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 20px 30px -10px rgba(255, 71, 87, 0.5);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 30px 40px -10px rgba(255, 71, 87, 0.7);
+            }
+        }
+        
+        /* Warning Title */
+        .warning-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff4757, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* Warning Messages */
+        .warning-message {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .warning-highlight {
+            background: linear-gradient(135deg, #fff3cd, #ffe69c);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border-left: 5px solid #ffc107;
+            text-align: left;
+        }
+        
+        .warning-highlight p {
+            margin: 10px 0;
+            color: #856404;
+        }
+        
+        .warning-highlight i {
+            color: #ffc107;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Warning List */
+        .warning-list {
+            text-align: left;
+            background: rgba(255, 71, 87, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .warning-list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 71, 87, 0.1);
+            color: #555;
+        }
+        
+        .warning-list-item:last-child {
+            border-bottom: none;
+        }
+        
+        .warning-list-item i {
+            color: #ff4757;
+            font-size: 1.2rem;
+            width: 25px;
+        }
+        
+        /* Warning Button */
+        .warning-btn {
+            background: linear-gradient(135deg, #5D8C3E, #4a7032);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            margin: 20px 0 10px;
+            box-shadow: 0 10px 20px -5px rgba(93, 140, 62, 0.4);
+            border: 2px solid transparent;
+        }
+        
+        .warning-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px -5px rgba(93, 140, 62, 0.6);
+            background: linear-gradient(135deg, #4a7032, #3a5a27);
+        }
+        
+        .warning-btn i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .warning-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Warning Footer */
+        .warning-footer {
+            margin-top: 30px;
+            padding: 20px 0 0;
+            border-top: 2px dashed #ff4757;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .warning-footer i {
+            color: #ff4757;
+            margin: 0 5px;
         }
         
         /* Auth Logo */
@@ -318,7 +490,7 @@
             50% { transform: scale(1.2); }
         }
         
-        /* Menu Button (3 gạch) - GIỮ NGUYÊN */
+        /* Menu Button */
         .menu-button {
             position: fixed;
             top: 30px;
@@ -351,7 +523,7 @@
             transition: all 0.3s ease;
         }
         
-        /* Menu Dropdown - GIỮ NGUYÊN */
+        /* Menu Dropdown */
         .menu-dropdown {
             position: fixed;
             top: 90px;
@@ -426,7 +598,7 @@
             animation: fadeIn 0.5s ease;
         }
         
-        /* Back Button - GIỮ cho các trang con */
+        /* Back Button */
         .back-btn {
             background-color: #5D8C3E;
             color: white;
@@ -750,7 +922,7 @@
             word-break: break-all;
         }
         
-        /* Interface Buttons - ĐÃ LOẠI BỎ (không hiển thị) */
+        /* Interface Buttons */
         .interface-buttons {
             display: none;
         }
@@ -826,6 +998,23 @@
         
         /* Responsive */
         @media (max-width: 768px) {
+            .warning-container {
+                padding: 30px 20px;
+            }
+            
+            .warning-title {
+                font-size: 1.8rem;
+            }
+            
+            .warning-icon {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .warning-icon i {
+                font-size: 3rem;
+            }
+            
             .auth-container {
                 padding: 30px 20px;
             }
@@ -891,8 +1080,55 @@
 <body id="mainBody">
     <div class="grid-overlay"></div>
     
+    <!-- Warning Container (NEW) -->
+    <div id="warningContainer" class="warning-container">
+        <div class="warning-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        
+        <h1 class="warning-title">CẢNH BÁO!</h1>
+        
+        <div class="warning-message">
+            Bạn đang truy cập vào <strong>HỆ THỐNG NỘI BỘ</strong> của dự án <span class="highlight">Crabor</span>
+        </div>
+        
+        <div class="warning-highlight">
+            <p><i class="fas fa-shield-alt"></i> <strong>Hệ thống này chỉ dành cho FOUNDER - KIỀU THANH HẢI</strong></p>
+            <p><i class="fas fa-lock"></i> Mọi hành vi truy cập trái phép đều bị ghi nhận và theo dõi</p>
+            <p><i class="fas fa-gavel"></i> Việc xâm nhập vào hệ thống nội bộ có thể bị xử lý theo quy định của pháp luật</p>
+        </div>
+        
+        <div class="warning-list">
+            <div class="warning-list-item">
+                <i class="fas fa-ban"></i>
+                <span>Không chia sẻ thông tin đăng nhập với bất kỳ ai</span>
+            </div>
+            <div class="warning-list-item">
+                <i class="fas fa-history"></i>
+                <span>Mọi hoạt động đều được ghi lại nhật ký hệ thống</span>
+            </div>
+            <div class="warning-list-item">
+                <i class="fas fa-fingerprint"></i>
+                <span>Địa chỉ IP và thiết bị của bạn đã được ghi nhận</span>
+            </div>
+            <div class="warning-list-item">
+                <i class="fas fa-clock"></i>
+                <span>Phiên đăng nhập sẽ tự động hết hạn sau 24 giờ</span>
+            </div>
+        </div>
+        
+        <button class="warning-btn" id="continueToLoginBtn">
+            <span>TIẾP TỤC ĐẾN TRANG ĐĂNG NHẬP</span>
+            <i class="fas fa-arrow-right"></i>
+        </button>
+        
+        <div class="warning-footer">
+            <i class="fas fa-crown"></i> Bằng cách tiếp tục, bạn xác nhận mình là <strong>Kiều Thanh Hải - Founder</strong> của dự án Crabor <i class="fas fa-crown"></i>
+        </div>
+    </div>
+    
     <!-- Auth Container -->
-    <div id="authContainer" class="auth-container">
+    <div id="authContainer" class="auth-container hidden">
         <div class="auth-logo">
             <div class="auth-logo-icon">
                 <i class="fas fa-crab"></i>
@@ -954,14 +1190,14 @@
             </div>
         </div>
         
-        <!-- Menu Button (3 gạch) - GIỮ NGUYÊN -->
+        <!-- Menu Button (3 gạch) -->
         <div class="menu-button" id="menuButton">
             <div class="menu-line"></div>
             <div class="menu-line"></div>
             <div class="menu-line"></div>
         </div>
         
-        <!-- Menu Dropdown - GIỮ NGUYÊN các mục chính (đã loại bỏ các nút không cần thiết) -->
+        <!-- Menu Dropdown -->
         <div class="menu-dropdown" id="menuDropdown">
             <button class="menu-item" onclick="showPage('home')">
                 <i class="fas fa-home"></i>
@@ -979,14 +1215,13 @@
                 <i class="fas fa-external-link-alt"></i>
                 <span>Truy cập ứng dụng chính</span>
             </button>
-            <!-- Đã loại bỏ các nút giao diện riêng lẻ (Customer, Shipper, Partner, Admin) nhưng vẫn giữ nút ứng dụng chính -->
             <button class="menu-item logout" onclick="logout()">
                 <i class="fas fa-sign-out-alt"></i>
                 <span>Đăng xuất</span>
             </button>
         </div>
         
-        <!-- Home Page - GIỮ NGUYÊN 100% NỘI DUNG GỐC -->
+        <!-- Home Page -->
         <div id="home-page" class="page-content active">
             <header>
                 <div class="logo">
@@ -995,8 +1230,6 @@
                 <h1>Dự Án Crabor</h1>
                 <p class="tagline">Hệ sinh thái giao đồ ăn với linh vật chú cua - Nhanh nhẹn, tin cậy và bền vững</p>
             </header>
-            
-            <!-- Đã loại bỏ phần interface-buttons (các nút truy cập nhanh) nhưng giữ nguyên mọi thứ khác -->
             
             <div class="content-grid">
                 <!-- Tiến độ dự án -->
@@ -1232,7 +1465,7 @@
             </footer>
         </div>
         
-        <!-- Legal Policy Page - GIỮ NGUYÊN 100% NỘI DUNG GỐC -->
+        <!-- Legal Policy Page -->
         <div id="legal-page" class="page-content">
             <button class="back-btn" onclick="showPage('home')">
                 <i class="fas fa-arrow-left"></i> Về Trang Chủ
@@ -1257,7 +1490,7 @@
             </footer>
         </div>
         
-        <!-- Tech Progress Page - GIỮ NGUYÊN 100% NỘI DUNG GỐC -->
+        <!-- Tech Progress Page -->
         <div id="tech-page" class="page-content">
             <button class="back-btn" onclick="showPage('home')">
                 <i class="fas fa-arrow-left"></i> Về Trang Chủ
@@ -1355,7 +1588,7 @@
         </div>
     </div>
 
-    <!-- Legal Policy Content (Hidden initially, loaded via JavaScript) - GIỮ NGUYÊN 100% NỘI DUNG GỐC -->
+    <!-- Legal Policy Content (Hidden initially, loaded via JavaScript) -->
     <script id="legal-policy-content" type="text/template">
         <div class="policy-section">
             <h3><i class="fas fa-file-contract"></i> Tổng Quan Chính Sách Pháp Lý</h3>
@@ -2004,18 +2237,18 @@
     </script>
 
     <script>
-        // ==================== AUTHENTICATION ====================
+        // ==================== WARNING SCREEN & AUTHENTICATION ====================
         // Hardcoded credentials (single user - founder only)
         const VALID_USERNAME = 'founder';
         const VALID_PASSWORD = '01222397657a';
         
-        // Check if already authenticated
         document.addEventListener('DOMContentLoaded', function() {
             // Check session storage for auth
             const isAuthenticated = sessionStorage.getItem('crabor_auth') === 'true';
             
             if (isAuthenticated) {
-                // User already authenticated, show main content
+                // User already authenticated, show main content directly
+                document.getElementById('warningContainer').classList.add('hidden');
                 document.getElementById('authContainer').classList.add('hidden');
                 document.getElementById('mainContainer').classList.add('active');
                 document.body.classList.add('authenticated');
@@ -2023,10 +2256,20 @@
                 // Initialize the main app
                 initializeMainApp();
             } else {
-                // Show auth container
-                document.getElementById('authContainer').classList.remove('hidden');
+                // Show warning screen first
+                document.getElementById('warningContainer').classList.remove('hidden');
+                document.getElementById('authContainer').classList.add('hidden');
                 document.getElementById('mainContainer').classList.remove('active');
                 document.body.classList.remove('authenticated');
+            }
+            
+            // Warning button click - go to login
+            const continueBtn = document.getElementById('continueToLoginBtn');
+            if (continueBtn) {
+                continueBtn.addEventListener('click', function() {
+                    document.getElementById('warningContainer').classList.add('hidden');
+                    document.getElementById('authContainer').classList.remove('hidden');
+                });
             }
             
             // Toggle password visibility
@@ -2091,6 +2334,7 @@
                 sessionStorage.setItem('crabor_auth', 'true');
                 
                 // Show main content
+                document.getElementById('warningContainer').classList.add('hidden');
                 document.getElementById('authContainer').classList.add('hidden');
                 document.getElementById('mainContainer').classList.add('active');
                 document.body.classList.add('authenticated');
@@ -2128,9 +2372,10 @@
             // Clear session
             sessionStorage.removeItem('crabor_auth');
             
-            // Hide main content
+            // Show warning screen
             document.getElementById('mainContainer').classList.remove('active');
-            document.getElementById('authContainer').classList.remove('hidden');
+            document.getElementById('authContainer').classList.add('hidden');
+            document.getElementById('warningContainer').classList.remove('hidden');
             document.body.classList.remove('authenticated');
             
             // Clear input fields
